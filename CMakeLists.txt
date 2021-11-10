@@ -12,7 +12,7 @@ add_library(sclMath SHARED
 
 #include list dir
 target_include_directories(sclMath PUBLIC
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
 include(CMakePackageConfigHelpers)
@@ -44,7 +44,7 @@ install(EXPORT sclMathTargets DESTINATION lib/cmake/sclMath)
 install(FILES "${PROJECT_BINARY_DIR}/sclMathConfigVersion.cmake"
               "${PROJECT_BINARY_DIR}/sclMathConfig.cmake"
         DESTINATION lib/cmake/sclMath)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
 
 
 # compile the tests
