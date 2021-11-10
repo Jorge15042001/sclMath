@@ -1,0 +1,6 @@
+/home/jorge1504/selfing/quantum-computing/Quantum-Computing-for-computer-scientist/ProgrammingDrills/chapter2/sclMath/tests/build/CMakeFiles/rebuild_cache.dir
+/home/jorge1504/selfing/quantum-computing/Quantum-Computing-for-computer-scientist/ProgrammingDrills/chapter2/sclMath/tests/build/CMakeFiles/edit_cache.dir
+/home/jorge1504/selfing/quantum-computing/Quantum-Computing-for-computer-scientist/ProgrammingDrills/chapter2/sclMath/tests/build/CMakeFiles/tests.dir
+/home/jorge1504/selfing/quantum-computing/Quantum-Computing-for-computer-scientist/ProgrammingDrills/chapter2/sclMath/tests/build/build/CMakeFiles/rebuild_cache.dir
+/home/jorge1504/selfing/quantum-computing/Quantum-Computing-for-computer-scientist/ProgrammingDrills/chapter2/sclMath/tests/build/build/CMakeFiles/edit_cache.dir
+/home/jorge1504/selfing/quantum-computing/Quantum-Computing-for-computer-scientist/ProgrammingDrills/chapter2/sclMath/tests/build/build/CMakeFiles/sclMath.dir
