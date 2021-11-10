@@ -2,8 +2,8 @@
  * mathematical solution to 2.4.8 form the book Quantum Computing to Computer Scientist
  * code's Author: Jorge Vulgarin
  */
-#include "../../../src/matrix.h"
-#include "../../../src/matrixOperations.h"
+#include <matrix.h>
+#include <matrixOperations.h>
 
 #include <cmath>
 #include <iostream>
