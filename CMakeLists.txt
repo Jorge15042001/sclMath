@@ -1,3 +1,4 @@
+find_package(Catch2 3 REQUIRED) # require for testing the code
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)# get compile_commands.json
 
@@ -8,15 +9,25 @@ add_library(sclMath SHARED
 
 #include list dir
 target_include_directories(sclMath PUBLIC
-  $(CMAKE_CURRENT_LIST_DIR)/src)
+  ${CMAKE_CURRENT_LIST_DIR}/src)
+
+
+# compile the tests
+FILE(GLOB TestSources tests/tests_src/*.cpp)
+
+# create the executable to run test
+add_executable(tests 
+  ${TestSources})
+  
+
+# link the sclMath library to test exucutable
+target_link_libraries(tests 
+  PRIVATE Catch2::Catch2WithMain
+  sclMath)
+
 
 
 #TODO: how to run tests on library build
-# add_custom_command(TARGET sclMath POST_BUILD
-#   COMMAND mkdir -p build
-#   COMMAND cd build
-#   COMMAND cmake ..
-#   COMMAND make
-#   COMMAND ./build/tests
-#   WORKING_DIRECTORY = ${CMAKE_CURRENT_LIST_DIR}/tests
-#   )
+add_custom_command(TARGET tests POST_BUILD
+  COMMAND ${CMAKE_CURRENT_LIST_DIR}/build/tests
+  )
