@@ -65,4 +65,5 @@ target_link_libraries(tests
 #TODO: how to run tests on library build
 add_custom_command(TARGET tests POST_BUILD
   COMMAND ${CMAKE_CURRENT_LIST_DIR}/build/tests
+  COMMAND cppcheck --project=${CMAKE_CURRENT_LIST_DIR}/compile_commands.json 
   )
