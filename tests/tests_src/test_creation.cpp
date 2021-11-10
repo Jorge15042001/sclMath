@@ -74,8 +74,3 @@ TEST_CASE( "negative size matrix", "[creation]" ) {
 
 }
 
-// TEST_CASE( "test get and set", "[get and set]" ) {
-//   const sclMath::Scalar rows = 3;
-//   const sclMath::Scalar cols = 2;
-//   sclMath::matrix m (2,2);
-// }
