@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/tests.dir/tests_src/creation.o -o tests  -Wl,-rpath,/home/jorge1504/selfing/quantum-computing/Quantum-Computing-for-computer-scientist/ProgrammingDrills/chapter2/sclMath/tests/build/build /usr/local/lib/libCatch2Main.a build/libsclMath.so /usr/local/lib/libCatch2.a 
