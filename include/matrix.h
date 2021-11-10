@@ -38,7 +38,7 @@ namespace sclMath {
 
       void set(const std::size_t i, const std::size_t j, const ComplexScalar s);
 
-      ComplexScalar get(const std::size_t i,const std::size_t j)const;
+      ComplexScalar get(const std::int64_t i,const std::int64_t j)const;
 
   };
   std::ostream& operator<< (std::ostream& os, const matrix& m);

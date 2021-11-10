@@ -2,6 +2,7 @@
 #include <cmath>
 #include <complex>
 #include <assert.h>
+#include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <type_traits>
@@ -102,9 +103,9 @@ namespace sclMath {
     return this->m_data[index];
   }
 
-  ComplexScalar matrix::get(const std::size_t i,const std::size_t j)const{
-    assert(i < this->rows);
-    assert(j < this->cols);
+  ComplexScalar matrix::get(const std::int64_t i,const std::int64_t j)const{
+    if(i >= this->rows || i < 0)throw "invalid index";
+    if(j >= this->cols || j < 0)throw "invalid index";
 
     const std::size_t index = this->cols * i + j;
 
