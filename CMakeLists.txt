@@ -1,4 +1,5 @@
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)# get compile_commands.json
 
 # compile the library
 FILE(GLOB sclMath_src src/*)
