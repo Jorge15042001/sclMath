@@ -3,7 +3,9 @@ find_package(Catch2 3 REQUIRED) # require for testing the code
 
 project(sclMath)
 
+SET(CMAKE_CXX_FLAGS  "-w -Werror -Wpedantic -Wall -Wextra -Wconversion -Wsign-compare -Wsign-conversion ")
 SET(CMAKE_INSTALL_PREFIX /usr)
+SET (CMAKE_CXX_STANDARD 20)
 
 # compile the library
 FILE(GLOB sclMath_src src/*)
