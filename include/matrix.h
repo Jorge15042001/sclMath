@@ -1,6 +1,7 @@
 #pragma once
 
 #include <complex>
+#include <type_traits>
 #include <vector>
 
 namespace sclMath {
@@ -17,7 +18,7 @@ namespace sclMath {
       ComplexScalar& getReferece (const std::size_t i,const std::size_t j);
 
     public:
-      matrix(const std::size_t rows, const std::size_t cols);
+      matrix(const  std::int64_t rows,  const std::int64_t cols);
 
       matrix& transpose() ;
       matrix& conjugate() ;
