@@ -1,6 +1,7 @@
 #include "matrixOperations.h"
 #include "matrix.h"
 #include <cmath>
+#include <cstdint>
 #include <iostream>
 
 namespace sclMath {
