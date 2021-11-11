@@ -38,3 +38,31 @@ TEST_CASE("sum  of same shape matrix","[sum]" )
 
 
 }
+TEST_CASE("sum right output shape","[sum]"){
+  sclMath::matrix m1 (1,1);
+  sclMath::matrix m2 (3,3);
+  sclMath::matrix m3 (7,7);
+  sclMath::matrix m4 (9,9);
+  sclMath::matrix m5 (2,2);
+
+  sclMath::matrix m1Result = m1+m1;
+  sclMath::matrix m2Result = m2+m2;
+  sclMath::matrix m3Result = m3+m3;
+  sclMath::matrix m4Result = m4+m4;
+  sclMath::matrix m5Result = m5+m5;
+
+  CHECK(m1.getRows()==m1Result.getRows());
+  CHECK(m1.getCols()==m1Result.getCols());
+
+  CHECK(m2.getRows()==m2Result.getRows());
+  CHECK(m2.getCols()==m2Result.getCols());
+
+  CHECK(m3.getRows()==m3Result.getRows());
+  CHECK(m3.getCols()==m3Result.getCols());
+
+  CHECK(m4.getRows()==m4Result.getRows());
+  CHECK(m4.getCols()==m4Result.getCols());
+
+  CHECK(m5.getRows()==m5Result.getRows());
+  CHECK(m5.getCols()==m5Result.getCols());
+}
