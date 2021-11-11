@@ -94,14 +94,6 @@ namespace sclMath {
     return *this;
   }
 
-  ComplexScalar& matrix::getReferece(const std::size_t i,const std::size_t j){
-    assert(i < this->rows);
-    assert(j < this->cols);
-
-    const std::size_t index = this->rows * i + j;
-
-    return this->m_data[index];
-  }
 
   ComplexScalar matrix::get(const std::int64_t i,const std::int64_t j)const{
     if(i >= this->rows || i < 0)throw "invalid index";

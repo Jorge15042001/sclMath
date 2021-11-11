@@ -15,7 +15,6 @@ namespace sclMath {
       std::size_t rows ;
       std::size_t cols ;
 
-      ComplexScalar& getReferece (const std::size_t i,const std::size_t j);
 
     public:
       matrix(const  std::int64_t rows,  const std::int64_t cols);
