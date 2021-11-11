@@ -18,6 +18,9 @@ namespace sclMath {
     return mCopy;
   }
   ComplexScalar innerProduct(const matrix& m1, const matrix& m2){
+    if (m1.getCols() != m2.getCols()) throw "not valid operation ammong different shapped matrices";
+    if (m1.getRows() != m2.getRows()) throw "not valid operation ammong different shapped matrices";
+
     const matrix m1Dagger = copyMatrix(m1).dagger();
     const matrix mult = m1Dagger*m2;
     return mult.trace();
