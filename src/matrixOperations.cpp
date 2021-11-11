@@ -73,7 +73,7 @@ namespace sclMath {
     return result;
   }
   matrix operator* (const matrix& m1, const matrix& m2){
-    assert(m1.getCols()==m2.getRows());
+    if (m1.getCols()!= m2.getRows()) throw "operants cant be multiplied because of incompatible shapes";
     
     const std::size_t n = m1.getCols();
     const std::size_t rows = m1.getRows();
