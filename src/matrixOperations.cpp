@@ -1,6 +1,5 @@
 #include "matrixOperations.h"
 #include "matrix.h"
-#include <assert.h>
 #include <cmath>
 #include <iostream>
 
