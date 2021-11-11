@@ -4,7 +4,6 @@
 namespace sclMath {
   matrix copyMatrix(const matrix&);
   ComplexScalar innerProduct(const matrix&, const matrix&);
-  //TODO: create  realScalar type and complexScalar
   Scalar distance (const matrix&, const matrix&);
   Scalar angle (const matrix&, const matrix&);
 
