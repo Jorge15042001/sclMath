@@ -57,6 +57,7 @@ namespace sclMath {
   }
 
   ComplexScalar matrix::trace()const {
+    if (this->cols!= this->rows)throw "not square matrix";
     assert(this->rows==this->cols);
     ComplexScalar result = 0;
     for (std::size_t i = 0 ; i<this->rows; i++){
