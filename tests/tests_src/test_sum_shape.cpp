@@ -7,7 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <iostream>
-TEST_CASE("sum of diferent shape matrix ","[trace]" )
+TEST_CASE("sum of diferent shape matrix ","[sum]" )
 {
   sclMath::matrix m1 (1,2);
   sclMath::matrix m2 (3,1);
@@ -22,7 +22,7 @@ TEST_CASE("sum of diferent shape matrix ","[trace]" )
   CHECK_THROWS(m2+m4);
 
 }
-TEST_CASE("sum  of same shape matrix","[trace]" )
+TEST_CASE("sum  of same shape matrix","[sum]" )
 {
   sclMath::matrix m1 (1,1);
   sclMath::matrix m2 (3,3);
