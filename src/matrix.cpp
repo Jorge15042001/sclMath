@@ -41,7 +41,6 @@ namespace sclMath {
     for (std::size_t i = 0; i<this->m_data.size(); i ++){
       new_m_data[f_finalPosition(i)]=this->m_data[i];
     }
-    //TODO: check for potencial memory leaks
     this->m_data = new_m_data;
 
     std::swap(this->cols,this->rows);
