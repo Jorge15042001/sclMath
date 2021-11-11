@@ -13,7 +13,6 @@ namespace sclMath {
   matrix::matrix(const std::int64_t rows,  const std::int64_t cols)
       :rows(rows),cols(cols),m_data(rows*cols)
   {
-    //TODO: is it possible to remove check for reali
     if (rows <= 0)throw "Invalid number of rows";
     if (cols <= 0)throw "Invalid number of columns";
   }
