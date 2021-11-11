@@ -59,7 +59,35 @@ SCENARIO("getting from matrix","[get]" )
         CHECK_THROWS(m.get(-7,5));
         CHECK_THROWS(m.get(7,-3));
         CHECK_THROWS(m.get(6,-4));
+        CHECK_THROWS(m.get(-6,-4));
+        CHECK_THROWS(m.get(-6,-3));
       }
     }
+    WHEN("a valid index in requested"){
+      ;
+      THEN("no errors should be throw "){
+        CHECK_NOTHROW(m.get(0,0));
+        CHECK_NOTHROW(m.get(0,1));
+        CHECK_NOTHROW(m.get(0,2));
+        CHECK_NOTHROW(m.get(0,3));
+
+        CHECK_NOTHROW(m.get(1,0));
+        CHECK_NOTHROW(m.get(1,1));
+        CHECK_NOTHROW(m.get(1,2));
+        CHECK_NOTHROW(m.get(1,3));
+
+        CHECK_NOTHROW(m.get(2,0));
+        CHECK_NOTHROW(m.get(2,1));
+        CHECK_NOTHROW(m.get(2,2));
+        CHECK_NOTHROW(m.get(2,3));
+
+        CHECK_NOTHROW(m.get(3,0));
+        CHECK_NOTHROW(m.get(3,1));
+        CHECK_NOTHROW(m.get(3,2));
+        CHECK_NOTHROW(m.get(3,3));
+
+      }
+    }
+
   }
 }
