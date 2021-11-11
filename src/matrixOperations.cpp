@@ -57,8 +57,8 @@ namespace sclMath {
     return result;
   }
   matrix operator- (const matrix& m1, const matrix& m2){
-    assert(m1.getRows()==m2.getRows());
-    assert(m1.getCols()==m2.getCols());
+    if (m1.getCols() != m2.getCols()) throw "not valid operation ammong different shapped matrices";
+    if (m1.getRows() != m2.getRows()) throw "not valid operation ammong different shapped matrices";
 
     const std::size_t rows =  m1.getRows();
     const std::size_t cols = m1.getCols();
