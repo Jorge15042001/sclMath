@@ -18,6 +18,7 @@ namespace sclMath {
     return mCopy;
   }
   ComplexScalar innerProduct(const matrix& m1, const matrix& m2){
+    //TODO: since matrix multiplication also validates this, for performance reasons may be a good idea to remove this check on non debug build
     if (m1.getCols() != m2.getCols()) throw "not valid operation ammong different shapped matrices";
     if (m1.getRows() != m2.getRows()) throw "not valid operation ammong different shapped matrices";
 
@@ -40,8 +41,8 @@ namespace sclMath {
     return std::acos(innerP.real()/(m1Norm*m2Norm));
   }
   matrix operator+ (const matrix& m1, const matrix& m2){
-    assert(m1.getRows()==m2.getRows());
-    assert(m1.getCols()==m2.getCols());
+    if (m1.getCols() != m2.getCols()) throw "not valid operation ammong different shapped matrices";
+    if (m1.getRows() != m2.getRows()) throw "not valid operation ammong different shapped matrices";
 
     const std::size_t rows =  m1.getRows();
     const std::size_t cols = m1.getCols();
