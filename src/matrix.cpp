@@ -113,8 +113,8 @@ namespace sclMath {
 
   }
   void matrix::set(const std::size_t i, const std::size_t j, const ComplexScalar s){
-    assert(i < this->rows);
-    assert(j < this->cols);
+    if(i >= this->rows || i < 0)throw "invalid index";
+    if(j >= this->cols || j < 0)throw "invalid index";
 
     this->m_data[this->cols*i+j] = s;
   }
