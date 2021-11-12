@@ -8,9 +8,9 @@ namespace sclMath {
   Scalar distance (const matrix&, const matrix&);
   Scalar angle (const matrix&, const matrix&);
 
-  matrix operator+ (const matrix&, const matrix&);
-  matrix operator- (const matrix&, const matrix&);
-  matrix operator* (const matrix&, const matrix&);
-  matrix operator* (const ComplexScalar, const matrix&);
-  std::int64_t operator== (const matrix&, const matrix&);
 }
+  sclMath::matrix operator+ (const sclMath::matrix&, const sclMath::matrix&);
+  sclMath::matrix operator- (const sclMath::matrix&, const sclMath::matrix&);
+  sclMath::matrix operator* (const sclMath::matrix&, const sclMath::matrix&);
+  sclMath::matrix operator* (const sclMath::ComplexScalar, const sclMath::matrix&);
+  std::int64_t operator== (const sclMath::matrix&, const sclMath::matrix&);

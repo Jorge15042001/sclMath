@@ -40,50 +40,51 @@ namespace sclMath {
 
     return std::acos(innerP.real()/(m1Norm*m2Norm));
   }
-  matrix operator+ (const matrix& m1, const matrix& m2){
+}
+  sclMath::matrix operator+ (const sclMath::matrix& m1, const sclMath::matrix& m2){
     sclMathError::ASSERT2(m1.getRows() == m2.getRows(),"Addition requires both matrices to have the same shape");
     sclMathError::ASSERT2(m1.getCols() == m2.getCols(),"Addition requires both matrices to have the same shape");
 
     const std::size_t rows =  m1.getRows();
     const std::size_t cols = m1.getCols();
-    matrix result = matrix(rows,cols);
+    sclMath::matrix result = sclMath::matrix(rows,cols);
     
     for (std::size_t i = 0; i<rows; i++){
       for (std::size_t j = 0; j<cols; j++){
-        const ComplexScalar sum = m1.get(i,j)+m2.get(i,j);
+        const sclMath::ComplexScalar sum = m1.get(i,j)+m2.get(i,j);
         result.set(i,j,sum);
       }
     }
     return result;
   }
-  matrix operator- (const matrix& m1, const matrix& m2){
+  sclMath::matrix operator- (const sclMath::matrix& m1, const sclMath::matrix& m2){
     sclMathError::ASSERT2(m1.getRows() == m2.getRows(),"Subtraction requires both matrices to have the same shape");
     sclMathError::ASSERT2(m1.getCols() == m2.getCols(),"Subtraction requires both matrices to have the same shape");
 
     const std::size_t rows =  m1.getRows();
     const std::size_t cols = m1.getCols();
-    matrix result = matrix(rows,cols);
+    sclMath::matrix result = sclMath::matrix(rows,cols);
     
     for (std::size_t i = 0; i<rows; i++){
       for (std::size_t j = 0; j<cols; j++){
-        const ComplexScalar subs = m1.get(i,j)-m2.get(i,j);
+        const sclMath::ComplexScalar subs = m1.get(i,j)-m2.get(i,j);
         result.set(i,j,subs);
       }
     }
     return result;
   }
-  matrix operator* (const matrix& m1, const matrix& m2){
-    sclMathError::ASSERT2(m1.getCols()==m2.getRows(),"Matrix multiplication is not defined, incompatible shapes");
+  sclMath::matrix operator* (const sclMath::matrix& m1, const sclMath::matrix& m2){
+    sclMathError::ASSERT2(m1.getCols()==m2.getRows(),"sclMath::matrix multiplication is not defined, incompatible shapes");
     
     const std::size_t n = m1.getCols();
     const std::size_t rows = m1.getRows();
     const std::size_t cols = m2.getCols();
 
-    matrix result (rows,cols);
+    sclMath::matrix result (rows,cols);
 
     for (std::size_t i = 0; i<rows; i++){
       for (std::size_t j = 0; j<cols; j++){
-        ComplexScalar sum = 0;
+        sclMath::ComplexScalar sum = 0;
         for (std::size_t h = 0; h<n; h++){
           sum+=m1.get(i,h)*m2.get(h,j);
         }
@@ -94,13 +95,13 @@ namespace sclMath {
     return result;
 
   }
-  matrix operator* (const ComplexScalar s, const matrix& m){
-    matrix mCopy = copyMatrix(m);
+  sclMath::matrix operator* (const sclMath::ComplexScalar s, const sclMath::matrix& m){
+    sclMath::matrix mCopy = sclMath::copyMatrix(m);
     mCopy.scale(s);
     return mCopy;
   }
   //TODO: write a test for this function
-  std::int64_t operator== (const matrix& m1, const matrix& m2){
+  std::int64_t operator== (const sclMath::matrix& m1, const sclMath::matrix& m2){
     if (m1.getRows()!=m2.getRows()) return false;
     if (m1.getCols()!=m2.getCols()) return false;
 
@@ -115,4 +116,3 @@ namespace sclMath {
     return true;
   }
 
-}
