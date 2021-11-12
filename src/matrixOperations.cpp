@@ -1,5 +1,6 @@
 #include "matrixOperations.h"
 #include "matrix.h"
+#include "sclMathErrors.h"
 #include <cmath>
 #include <cstdint>
 #include <iostream>
@@ -19,9 +20,9 @@ namespace sclMath {
   }
   ComplexScalar innerProduct(const matrix& m1, const matrix& m2){
     //TODO: since matrix multiplication also validates this, for performance reasons may be a good idea to remove this check on non debug build
-    if (m1.getCols() != m2.getCols()) throw "not valid operation ammong different shapped matrices";
-    if (m1.getRows() != m2.getRows()) throw "not valid operation ammong different shapped matrices";
-
+    sclMathError::ASSERT2(m1.getRows() == m2.getRows(),"Inner Product requires both matrices to have the same shape");
+    sclMathError::ASSERT2(m1.getCols() == m2.getCols(),"Inner Product requires both matrices to have the same shape");
+    
     const matrix m1Dagger = copyMatrix(m1).dagger();
     const matrix mult = m1Dagger*m2;
     return mult.trace();
@@ -41,8 +42,8 @@ namespace sclMath {
     return std::acos(innerP.real()/(m1Norm*m2Norm));
   }
   matrix operator+ (const matrix& m1, const matrix& m2){
-    if (m1.getCols() != m2.getCols()) throw "not valid operation ammong different shapped matrices";
-    if (m1.getRows() != m2.getRows()) throw "not valid operation ammong different shapped matrices";
+    sclMathError::ASSERT2(m1.getRows() == m2.getRows(),"Addition requires both matrices to have the same shape");
+    sclMathError::ASSERT2(m1.getCols() == m2.getCols(),"Addition requires both matrices to have the same shape");
 
     const std::size_t rows =  m1.getRows();
     const std::size_t cols = m1.getCols();
@@ -57,8 +58,8 @@ namespace sclMath {
     return result;
   }
   matrix operator- (const matrix& m1, const matrix& m2){
-    if (m1.getCols() != m2.getCols()) throw "not valid operation ammong different shapped matrices";
-    if (m1.getRows() != m2.getRows()) throw "not valid operation ammong different shapped matrices";
+    sclMathError::ASSERT2(m1.getRows() == m2.getRows(),"Subtraction requires both matrices to have the same shape");
+    sclMathError::ASSERT2(m1.getCols() == m2.getCols(),"Subtraction requires both matrices to have the same shape");
 
     const std::size_t rows =  m1.getRows();
     const std::size_t cols = m1.getCols();
@@ -73,7 +74,7 @@ namespace sclMath {
     return result;
   }
   matrix operator* (const matrix& m1, const matrix& m2){
-    if (m1.getCols()!= m2.getRows()) throw "operants cant be multiplied because of incompatible shapes";
+    sclMathError::ASSERT2(m1.getCols()==m2.getRows(),"Matrix multiplication is not defined, incompatible shapes");
     
     const std::size_t n = m1.getCols();
     const std::size_t rows = m1.getRows();
