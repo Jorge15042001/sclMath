@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include "sclMathErrors.h"
 #include <cmath>
 #include <complex>
 #include <assert.h>
@@ -13,8 +14,8 @@ namespace sclMath {
   matrix::matrix(const std::int64_t rows,  const std::int64_t cols)
       :rows(rows),cols(cols),m_data(rows*cols)
   {
-    if (rows <= 0)throw "Invalid number of rows";
-    if (cols <= 0)throw "Invalid number of columns";
+    sclMathError::ASSERT2(rows > 0," number of rows can not be negative or zero");
+    sclMathError::ASSERT2(cols > 0," number of columns can not be negative or zero");
   }
 
   std::size_t matrix::getRows()const{
@@ -55,7 +56,7 @@ namespace sclMath {
   }
 
   ComplexScalar matrix::trace()const {
-    if (this->cols!= this->rows)throw "not square matrix";
+    sclMathError::ASSERT2(this->rows == this->cols ,"trace() is not valid for non squared matrices");
     ComplexScalar result = 0;
     for (std::size_t i = 0 ; i<this->rows; i++){
       result += this->get(i,i);
@@ -94,8 +95,8 @@ namespace sclMath {
 
 
   ComplexScalar matrix::get(const std::int64_t i,const std::int64_t j)const{
-    if(i >= this->rows || i < 0)throw "invalid index";
-    if(j >= this->cols || j < 0)throw "invalid index";
+    sclMathError::ASSERT2(i>=0 && i<this->rows,"requested row index is out of range");
+    sclMathError::ASSERT2(j>=0 && j<this->cols,"requested column index is out of range");
 
     const std::size_t index = this->cols * i + j;
 
@@ -103,8 +104,8 @@ namespace sclMath {
 
   }
   void matrix::set(const std::size_t i, const std::size_t j, const ComplexScalar s){
-    if(i >= this->rows || i < 0)throw "invalid index";
-    if(j >= this->cols || j < 0)throw "invalid index";
+    sclMathError::ASSERT2(i>=0 && i<this->rows,"requested row index is out of range");
+    sclMathError::ASSERT2(j>=0 && j<this->cols,"requested column index is out of range");
 
     this->m_data[this->cols*i+j] = s;
   }
