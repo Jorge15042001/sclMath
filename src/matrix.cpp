@@ -73,7 +73,7 @@ namespace sclMath {
     return std::sqrt(this->normSquared());
   }
 
-  bool matrix::isHermitia()const{
+  bool matrix::isHermitian()const{
     //if is not square matrix return false;
     if (this->rows!= this->cols)return false;
     // A[j,k]=conjugate(A[k,j]

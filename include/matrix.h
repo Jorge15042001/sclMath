@@ -27,7 +27,7 @@ namespace sclMath {
       Scalar normSquared()const;
       Scalar norm()const;
 
-      bool isHermitia()const;
+      bool isHermitian()const;
 
       matrix& scale(const ComplexScalar s);
 
