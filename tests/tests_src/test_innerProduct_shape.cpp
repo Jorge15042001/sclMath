@@ -13,12 +13,14 @@ TEST_CASE("innerProduct of diferent shape matrix ","[trace]" )
   sclMath::matrix m3 (7,8);
   sclMath::matrix m4 (9,4);
   sclMath::matrix m5 (2,9);
+  sclMath::matrix m6 (3,2);
 
   CHECK_THROWS(sclMath::innerProduct(m1,m2));
   CHECK_THROWS(sclMath::innerProduct(m2,m3));
   CHECK_THROWS(sclMath::innerProduct(m1,m3));
   CHECK_THROWS(sclMath::innerProduct(m3,m5));
   CHECK_THROWS(sclMath::innerProduct(m2,m4));
+  CHECK_THROWS(sclMath::innerProduct(m2,m6));
 
 }
 TEST_CASE("innerProduct  of same shape matrix","[trace]" )
