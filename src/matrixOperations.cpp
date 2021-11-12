@@ -19,7 +19,6 @@ namespace sclMath {
     return mCopy;
   }
   ComplexScalar innerProduct(const matrix& m1, const matrix& m2){
-    //TODO: since matrix multiplication also validates this, for performance reasons may be a good idea to remove this check on non debug build
     sclMathError::ASSERT2(m1.getRows() == m2.getRows(),"Inner Product requires both matrices to have the same shape");
     sclMathError::ASSERT2(m1.getCols() == m2.getCols(),"Inner Product requires both matrices to have the same shape");
     
