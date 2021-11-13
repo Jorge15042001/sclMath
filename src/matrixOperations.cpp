@@ -102,7 +102,7 @@ namespace sclMath {
     return mCopy;
   }
   //TODO: write a test for this function
-  std::int64_t operator== (const sclMath::matrix& m1, const sclMath::matrix& m2){
+  bool operator== (const sclMath::matrix& m1, const sclMath::matrix& m2){
     if (m1.getRows()!=m2.getRows()) return false;
     if (m1.getCols()!=m2.getCols()) return false;
 

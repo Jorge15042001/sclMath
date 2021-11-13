@@ -13,4 +13,4 @@ namespace sclMath {
   sclMath::matrix operator- (const sclMath::matrix&, const sclMath::matrix&);
   sclMath::matrix operator* (const sclMath::matrix&, const sclMath::matrix&);
   sclMath::matrix operator* (const sclMath::ComplexScalar, const sclMath::matrix&);
-  std::int64_t operator== (const sclMath::matrix&, const sclMath::matrix&);
+  bool operator== (const sclMath::matrix&, const sclMath::matrix&);
