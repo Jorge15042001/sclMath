@@ -47,7 +47,7 @@ int main(){
 
 
 
-    if (!(result1 == result2)){//TODO: floating precision error in comparison
+    if (!(result1 == result2)){
       std::cout<<result1;
       std::cout<<result2;
 
