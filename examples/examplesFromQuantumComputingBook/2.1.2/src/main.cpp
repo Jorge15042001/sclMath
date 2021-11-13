@@ -1,6 +1,6 @@
 /*
  * prove the associativity property
- * brute force approch, not formal niether complete
+ * brute force approach, not formal neither complete
  */
 #include <cstdlib>
 #include <iostream>
@@ -26,7 +26,7 @@ int main(){
   sclMath::matrix m3 (4,1);
 
   for (std::size_t i = 0; i < repetitions; i++){
-    //fill the matrices with radnom values
+    //fill the matrices with random values
     m1.set(0,0,randomComplex());
     m1.set(1,0,randomComplex());
     m1.set(2,0,randomComplex());
@@ -47,21 +47,21 @@ int main(){
 
 
 
-    if (!(result1 == result2)){//TODO: flotatting presicion error in comparison
+    if (!(result1 == result2)){//TODO: floating precision error in comparison
       std::cout<<result1;
       std::cout<<result2;
 
       
-      std::cout<<false;
+      std::cout<<"counter example found, associativity property is not real";
       return 1;
     }
-    std::cout<<true;
 
   }
+  std::cout<<"no counter examples were found";
   //
   
   //TODO:[creation] easier api to initialize matrix
   //TODO:[creation] better print formatting 
-  //TODO:[creation] possible random matrice intitlzation  my be useefull
+  //TODO:[creation] possible random matrices initialization  my be useful
   //TODO:[comparison] overload != operator
 }
