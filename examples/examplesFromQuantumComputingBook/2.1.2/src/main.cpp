@@ -5,8 +5,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <matrix.h>
-#include "matrix.h"
-#include "matrixOperations.h"
+#include <matrix.h>
+#include <matrixOperations.h>
 #include <random>
 
 const unsigned int randomSeed = 7483710;
@@ -45,16 +45,19 @@ int main(){
     sclMath::matrix result1 = (m1+m2)+m3;
     sclMath::matrix result2 = m1+(m2+m3);
 
-    std::cout<<result1;
-    std::cout<<result2;
 
-  //   if (!(result1 == result2)){
-  //     std::cout<<"FALSE";
-  //     return 1;
-  //   }
-  //
+
+    if (!(result1 == result2)){//TODO: flotatting presicion error in comparison
+      std::cout<<result1;
+      std::cout<<result2;
+
+      
+      std::cout<<false;
+      return 1;
+    }
+    std::cout<<true;
+
   }
-  // return 1;
   //
   
   //TODO:[creation] easier api to initialize matrix
