@@ -1,4 +1,5 @@
 #include "matrixOperations.h"
+#include "sclMathUtility.h"
 #include "matrix.h"
 #include "sclMathErrors.h"
 #include <cmath>
@@ -110,7 +111,7 @@ namespace sclMath {
 
     for (std::size_t i= 0; i<rows; i++){
       for( std::size_t j = 0; j<cols; j++){
-        if(m1.get(i,j)!=m2.get(i,j))return false;
+        if(!sclMathUtility::areaAlmostEqual(m1.get(i,j),m2.get(i,j)))return false;
       }
     }
     return true;
