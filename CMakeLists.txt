@@ -4,7 +4,6 @@ find_package(Catch2 3 REQUIRED) # require for testing the code
 project(sclMath)
 
 SET(CMAKE_CXX_FLAGS  "-w -Werror -Wpedantic -Wall -Wextra -Wconversion -Wsign-compare -Wsign-conversion ")
-SET(CMAKE_INSTALL_PREFIX /usr)
 SET(CMAKE_CXX_STANDARD 20)
 SET(CMAKE_BUILD_TYPE DEBUG)
 if (${CMAKE_BUILD_TYPE} STREQUAL "DEBUG")
