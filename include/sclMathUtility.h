@@ -1,3 +1,4 @@
+#pragma once
 #include <cmath>
 #include <limits>
 #include <iomanip>
@@ -9,4 +10,5 @@
 namespace sclMathUtility {
   bool areaAlmostEqual(sclMath::ComplexScalar a, sclMath::ComplexScalar b);
   bool areaAlmostEqual(sclMath::Scalar a, sclMath::Scalar b);
+  void setUPL(const std::uint64_t);
 }
