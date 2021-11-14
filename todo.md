@@ -4,14 +4,14 @@ Since we already have a functional simple back-end, we can implement the followi
 - [ ]vector : constant size 
 
 **Probably better implement as fake classes**
-- [ ]zeroVector: all indexes are zero
-- [ ]unitVector: all zeros, except 1 index
+- [ ] zeroVector: all indexes are zero
+- [ ] unitVector: all zeros, except 1 index
 
 ## vector proxies
-- [ ]range: accesor, view to the vector for contiguous elements
-- [ ]slice: accesor, view to the vector for [un]contiguous elements
-- [ ]row:
-- [ ]col:
+- [ ] range: accesor, view to the vector for contiguous elements
+- [ ] slice: accesor, view to the vector for [un]contiguous elements
+- [ ] row:
+- [ ] col:
 
 ## matrices
 - [ ] matrices: missing reshaping, adding cols and rows
