@@ -1,4 +1,4 @@
-#include "matrixOperations.h"
+#include "sclMatrixOperations.hpp"
 #include "sclMathErrors.h"
 #include "sclMathUtility.h"
 #include "sclMatrix.hpp"

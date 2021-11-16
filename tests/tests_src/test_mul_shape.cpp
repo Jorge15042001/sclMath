@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include "sclMatrix.hpp"
-#include  "matrixOperations.h"
+#include "sclMatrixOperations.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <vector>
