@@ -1,5 +1,5 @@
 #include "sclMatrixOperations.hpp"
-#include "sclMathErrors.h"
+#include "sclMathErrors.hpp"
 #include "sclMathUtility.h"
 #include "sclMatrix.hpp"
 #include <cmath>

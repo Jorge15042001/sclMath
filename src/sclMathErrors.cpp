@@ -1,4 +1,4 @@
-#include "sclMathErrors.h"
+#include "sclMathErrors.hpp"
 namespace sclMathError {
 
 sclMathRuntime_error::sclMathRuntime_error(const std::string &err_data,

@@ -1,5 +1,5 @@
 #include "sclMatrix.hpp"
-#include "sclMathErrors.h"
+#include "sclMathErrors.hpp"
 #include <assert.h>
 #include <cmath>
 #include <complex>
