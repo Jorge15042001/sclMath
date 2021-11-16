@@ -1,6 +1,6 @@
 #include "sclMatrixOperations.hpp"
 #include "sclMathErrors.hpp"
-#include "sclMathUtility.h"
+#include "sclMathUtility.hpp"
 #include "sclMatrix.hpp"
 #include <cmath>
 #include <cstdint>

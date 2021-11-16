@@ -1,4 +1,4 @@
-#include "sclMathUtility.h"
+#include "sclMathUtility.hpp"
 #include <cmath>
 
 namespace sclMathUtility {
