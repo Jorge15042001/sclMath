@@ -1,6 +1,6 @@
 #pragma once
 
-#include "matrix.h"
+#include "sclMatrix.hpp"
 #include <cstdint>
 namespace sclMath {
 matrix copyMatrix(const matrix &);

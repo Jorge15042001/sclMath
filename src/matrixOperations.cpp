@@ -1,7 +1,7 @@
 #include "matrixOperations.h"
-#include "matrix.h"
 #include "sclMathErrors.h"
 #include "sclMathUtility.h"
+#include "sclMatrix.hpp"
 #include <cmath>
 #include <cstdint>
 #include <iostream>

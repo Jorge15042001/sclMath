@@ -1,4 +1,4 @@
-#include "matrix.h"
+#include "sclMatrix.hpp"
 #include "sclMathErrors.h"
 #include <assert.h>
 #include <cmath>
