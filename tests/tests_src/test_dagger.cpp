@@ -24,11 +24,11 @@ SCENARIO("dagger of matrix", "[dagger]") {
     m.set(1, 2, sclMath::ComplexScalar(-0.4, 1.3));
     m.set(1, 1, sclMath::ComplexScalar(0.2, 1.2));
 
-    WHEN("when the matrix is transposed") {
+    WHEN("when the dagger operation is applied to the matrix") {
 
       m.dagger();
 
-      THEN("swaps m[i,j] with m[j,i]") {
+      THEN("swaps m[i,j] with conjugate(m[j,i])") {
         REQUIRE(m.get(0, 0) == sclMath::ComplexScalar(0, -1));
         REQUIRE(m.get(3, 1) == sclMath::ComplexScalar(1, -1));
         REQUIRE(m.get(1, 2) == sclMath::ComplexScalar(2, -1.1));
@@ -40,7 +40,7 @@ SCENARIO("dagger of matrix", "[dagger]") {
         REQUIRE(m.get(1, 1) == sclMath::ComplexScalar(0.2, -1.2));
       }
     }
-    WHEN("the matrix is conjugated twice ") {
+    WHEN("the dagger operation is perform twice") {
       m.dagger().dagger();
 
       THEN("the value at each position should e the same ") {
@@ -73,11 +73,11 @@ SCENARIO("dagger of matrix", "[dagger]") {
     m.set(1, 2, -1);
     m.set(1, 1, 0.1);
 
-    WHEN("when the matrix is transposed") {
+    WHEN("the dagger operation is perform on a RealMatrix") {
 
       m.dagger();
 
-      THEN("swaps m[i,j] with m[j,i]") {
+      THEN("it acts as a transpose operation") {
         REQUIRE(m.get(0, 0) == 4);
         REQUIRE(m.get(3, 1) == 1);
         REQUIRE(m.get(1, 2) == 2);
@@ -89,7 +89,7 @@ SCENARIO("dagger of matrix", "[dagger]") {
         REQUIRE(m.get(1, 1) == 0.1);
       }
     }
-    WHEN("the matrix is conjugated twice ") {
+    WHEN("the dagger operation is perform twice on a RealMatrix") {
       m.dagger().dagger();
 
       THEN("the value at each position should e the same ") {
