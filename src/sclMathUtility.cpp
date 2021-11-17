@@ -21,7 +21,7 @@ bool areaAlmostEqual(sclMath::ComplexScalar a, sclMath::ComplexScalar b) {
          floating_almost_equal(a.imag(), b.imag(), UPL);
 }
 // save comparison between two sclMath::Scalar  aka(real number)
-bool areaAlmostEqual(sclMath::Scalar a, sclMath::Scalar b) {
+bool areaAlmostEqual(sclMath::RealScalar a, sclMath::RealScalar b) {
   return floating_almost_equal(a, b, UPL);
 }
 
