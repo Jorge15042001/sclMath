@@ -1,16 +1,16 @@
 #include "sclMatrix.hpp"
 #include "sclMathErrors.hpp"
-#include <assert.h>
 #include <cmath>
-#include <complex>
 #include <cstdlib>
-#include <iostream>
 #include <memory>
 #include <type_traits>
 #include <vector>
 
+// implementation
+
 namespace sclMath {
-matrix::matrix(const std::int64_t rows, const std::int64_t cols)
+template <c_ScalarType T_SCALAR>
+matrix<T_SCALAR>::matrix(const std::int64_t rows, const std::int64_t cols)
     : rows(rows), cols(cols), m_data(rows * cols) {
   sclMathError::ASSERT2(rows > 0,
                         " number of rows can not be negative or zero");
@@ -18,20 +18,26 @@ matrix::matrix(const std::int64_t rows, const std::int64_t cols)
                         " number of columns can not be negative or zero");
 }
 
-std::size_t matrix::getRows() const { return this->rows; }
+template <c_ScalarType T_SCALAR> std::size_t matrix<T_SCALAR>::getRows() const {
+  return this->rows;
+}
 
-std::size_t matrix::getCols() const { return this->cols; }
+template <c_ScalarType T_SCALAR> std::size_t matrix<T_SCALAR>::getCols() const {
+  return this->cols;
+}
 
-matrix &matrix::conjugate() {
+template <c_ScalarType T_SCALAR>
+matrix<T_SCALAR> &matrix<T_SCALAR>::conjugate() {
   for (auto &c : this->m_data) {
     c = std::conj(c);
   }
   return *this;
 }
 
-matrix &matrix::transpose() {
+template <c_ScalarType T_SCALAR>
+matrix<T_SCALAR> &matrix<T_SCALAR>::transpose() {
   // AT[i,] = A[j,i]
-  std::vector<ComplexScalar> new_m_data(this->m_data.size());
+  std::vector<T_SCALAR> new_m_data(this->m_data.size());
 
   auto f_finalPosition = [this](const std::size_t x) {
     return (x % this->cols) * this->rows + x / this->cols;
@@ -46,32 +52,36 @@ matrix &matrix::transpose() {
   return *this;
 }
 
-matrix &matrix::dagger() {
+template <c_ScalarType T_SCALAR> matrix<T_SCALAR> &matrix<T_SCALAR>::dagger() {
   this->conjugate();
   this->transpose();
 
   return *this;
 }
 
-ComplexScalar matrix::trace() const {
+template <c_ScalarType T_SCALAR> T_SCALAR matrix<T_SCALAR>::trace() const {
   sclMathError::ASSERT2(this->rows == this->cols,
                         "trace() is not valid for non squared matrices");
-  ComplexScalar result = 0;
+  T_SCALAR result = 0;
   for (std::size_t i = 0; i < this->rows; i++) {
     result += this->get(i, i);
   }
   return result;
 }
 
-Scalar matrix::normSquared() const {
-  Scalar reuslt = 0;
+template <c_ScalarType T_SCALAR>
+RealScalar matrix<T_SCALAR>::normSquared() const {
+  RealScalar reuslt = 0;
   for (const ComplexScalar s : this->m_data)
+    // TODO: check if std::conj(float) may cause perfonmance issues
     reuslt += (s * std::conj(s)).real();
   return reuslt;
 }
-Scalar matrix::norm() const { return std::sqrt(this->normSquared()); }
+template <c_ScalarType T_SCALAR> RealScalar matrix<T_SCALAR>::norm() const {
+  return std::sqrt(this->normSquared());
+}
 
-bool matrix::isHermitian() const {
+template <c_ScalarType T_SCALAR> bool matrix<T_SCALAR>::isHermitian() const {
   // if is not square matrix return false;
   if (this->rows != this->cols)
     return false;
@@ -86,14 +96,17 @@ bool matrix::isHermitian() const {
   }
   return true;
 }
-
-matrix &matrix::scale(const ComplexScalar c) {
-  for (ComplexScalar &s : this->m_data)
+// TODO: no everload for sclMath::Scalar and sclMath::ComplexScalar
+template <c_ScalarType T_SCALAR>
+matrix<T_SCALAR> &matrix<T_SCALAR>::scale(const T_SCALAR c) {
+  for (T_SCALAR &s : this->m_data)
     s *= c;
   return *this;
 }
 
-ComplexScalar matrix::get(const std::int64_t i, const std::int64_t j) const {
+template <c_ScalarType T_SCALAR>
+T_SCALAR matrix<T_SCALAR>::get(const std::int64_t i,
+                               const std::int64_t j) const {
   sclMathError::ASSERT2(i >= 0 && i < this->rows,
                         "requested row index is out of range");
   sclMathError::ASSERT2(j >= 0 && j < this->cols,
@@ -103,8 +116,9 @@ ComplexScalar matrix::get(const std::int64_t i, const std::int64_t j) const {
 
   return this->m_data[index];
 }
-void matrix::set(const std::size_t i, const std::size_t j,
-                 const ComplexScalar s) {
+template <c_ScalarType T_SCALAR>
+void matrix<T_SCALAR>::set(const std::size_t i, const std::size_t j,
+                           const T_SCALAR s) {
   sclMathError::ASSERT2(i >= 0 && i < this->rows,
                         "requested row index is out of range");
   sclMathError::ASSERT2(j >= 0 && j < this->cols,
@@ -113,7 +127,8 @@ void matrix::set(const std::size_t i, const std::size_t j,
   this->m_data[this->cols * i + j] = s;
 }
 
-std::ostream &operator<<(std::ostream &os, const matrix &m) {
+template <c_ScalarType T_SCALAR>
+std::ostream &operator<<(std::ostream &os, const matrix<T_SCALAR> &m) {
   const std::size_t rows = m.getRows();
   const std::size_t cols = m.getCols();
 
@@ -130,4 +145,5 @@ std::ostream &operator<<(std::ostream &os, const matrix &m) {
   os << "}\n";
   return os;
 }
+
 } // namespace sclMath
