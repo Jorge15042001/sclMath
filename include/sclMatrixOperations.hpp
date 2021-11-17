@@ -144,7 +144,7 @@ T_SCALAR innerProduct(const matrix<T_SCALAR> &m1, const matrix<T_SCALAR> &m2) {
       m1.getCols() == m2.getCols(),
       "Inner Product requires both matrices to have the same shape");
 
-  const matrix m1Dagger = copyMatrix(m1).dagger();
+  const matrix m1Dagger = copyMatrix<T_SCALAR, T_SCALAR>(m1).dagger();
   const matrix mult = m1Dagger * m2;
   return mult.trace();
 }
