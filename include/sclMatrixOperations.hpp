@@ -220,7 +220,7 @@ sclMath::matrix<T_SCALAR> operator+(const sclMath::matrix<T_SCALAR> &m1,
 
   for (std::size_t i = 0; i < rows; i++) {
     for (std::size_t j = 0; j < cols; j++) {
-      const sclMath::ComplexScalar sum = m1.get(i, j) + m2.get(i, j);
+      const T_SCALAR sum = m1.get(i, j) + m2.get(i, j);
       result.set(i, j, sum);
     }
   }
