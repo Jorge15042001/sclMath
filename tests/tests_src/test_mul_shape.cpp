@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
-TEST_CASE("mul of incompatible shapes matrices ", "[mul]") {
+TEST_CASE("mul of incompatible shapes complex matrices ", "[mul]") {
   sclMath::ComplexMatrix m1(1, 2);
   sclMath::ComplexMatrix m2(3, 1);
   sclMath::ComplexMatrix m3(7, 8);
@@ -17,7 +17,7 @@ TEST_CASE("mul of incompatible shapes matrices ", "[mul]") {
   CHECK_THROWS(m3 * m5);
   CHECK_THROWS(m2 * m4);
 }
-TEST_CASE("mul of compatible shape matrices", "[mul]") {
+TEST_CASE("mul of compatible shape complex matrices", "[mul]") {
   sclMath::ComplexMatrix m1(1, 3);
   sclMath::ComplexMatrix m2(3, 2);
   sclMath::ComplexMatrix m3(7, 7);
@@ -30,7 +30,7 @@ TEST_CASE("mul of compatible shape matrices", "[mul]") {
   CHECK_NOTHROW(m4 * m3);
   CHECK_NOTHROW(m5 * m4);
 }
-TEST_CASE("output shape of matrix mul", "[sub]") {
+TEST_CASE("output shape of complex matrix mul", "[mul]") {
   sclMath::ComplexMatrix m1(1, 3);
   sclMath::ComplexMatrix m2(3, 2);
   sclMath::ComplexMatrix m3(7, 7);
@@ -54,7 +54,7 @@ TEST_CASE("output shape of matrix mul", "[sub]") {
   CHECK(m5.getRows() == Result4.getRows());
   CHECK(m4.getCols() == Result4.getCols());
 }
-TEST_CASE("mul of incompatible shapes matrices ", "[mul]") {
+TEST_CASE("mul of incompatible shapes real matrices ", "[mul]") {
   sclMath::RealMatrix m1(1, 2);
   sclMath::RealMatrix m2(3, 1);
   sclMath::RealMatrix m3(7, 8);
@@ -67,7 +67,7 @@ TEST_CASE("mul of incompatible shapes matrices ", "[mul]") {
   CHECK_THROWS(m3 * m5);
   CHECK_THROWS(m2 * m4);
 }
-TEST_CASE("mul of compatible shape matrices", "[mul]") {
+TEST_CASE("mul of compatible shape real matrices", "[mul]") {
   sclMath::RealMatrix m1(1, 3);
   sclMath::RealMatrix m2(3, 2);
   sclMath::RealMatrix m3(7, 7);
@@ -80,7 +80,7 @@ TEST_CASE("mul of compatible shape matrices", "[mul]") {
   CHECK_NOTHROW(m4 * m3);
   CHECK_NOTHROW(m5 * m4);
 }
-TEST_CASE("output shape of matrix mul", "[sub]") {
+TEST_CASE("output shape of real matrix mul", "[mul]") {
   sclMath::RealMatrix m1(1, 3);
   sclMath::RealMatrix m2(3, 2);
   sclMath::RealMatrix m3(7, 7);
