@@ -28,20 +28,24 @@ public:
   matrix &conjugate();
   matrix &dagger();
 
-  ComplexScalar trace() const;
-  Scalar normSquared() const;
-  Scalar norm() const;
+  T_SCALAR trace() const;
+  RealScalar normSquared() const;
+  RealScalar norm() const;
 
+  // TODO: is transpose methood missing
   bool isHermitian() const;
 
-  matrix &scale(const ComplexScalar s);
+  matrix &scale(const T_SCALAR s);
 
   std::size_t getRows() const;
   std::size_t getCols() const;
 
-  void set(const std::size_t i, const std::size_t j, const ComplexScalar s);
+  void set(const std::size_t i, const std::size_t j, const T_SCALAR s);
 
-  ComplexScalar get(const std::int64_t i, const std::int64_t j) const;
+  T_SCALAR get(const std::int64_t i, const std::int64_t j) const;
+  /* std::ostream &operator<<(std::ostream &os, const matrix &m); */
 };
-std::ostream &operator<<(std::ostream &os, const matrix &m);
+
+typedef matrix<RealScalar> RealMatrix;
+typedef matrix<ComplexScalar> ComplexMatrix;
 } // namespace sclMath
