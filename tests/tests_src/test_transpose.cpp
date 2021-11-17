@@ -41,7 +41,7 @@ SCENARIO("transpose of ComplexMatrix", "[transpose]") {
       }
     }
     WHEN("the matrix is conjugated twice ") {
-      m.conjugate().conjugate();
+      m.transpose().transpose();
 
       THEN("the value at each position should e the same ") {
         REQUIRE(m.get(0, 0) == sclMath::ComplexScalar(0, 1));
@@ -90,7 +90,7 @@ SCENARIO("transpose of ComplexMatrix", "[transpose]") {
       }
     }
     WHEN("the matrix is conjugated twice ") {
-      m.conjugate().conjugate();
+      m.transpose().transpose();
 
       THEN("the value at each position should e the same ") {
         REQUIRE(m.get(0, 0) == 1);
