@@ -9,6 +9,6 @@
 
 namespace sclMathUtility {
 bool areaAlmostEqual(sclMath::ComplexScalar a, sclMath::ComplexScalar b);
-bool areaAlmostEqual(sclMath::Scalar a, sclMath::Scalar b);
+bool areaAlmostEqual(sclMath::RealScalar a, sclMath::RealScalar b);
 void setUPL(const std::uint64_t);
 } // namespace sclMathUtility
