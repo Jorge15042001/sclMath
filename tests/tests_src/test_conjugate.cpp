@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "sclMatrix/sclMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
@@ -56,6 +57,34 @@ SCENARIO("conjugate of matrix", "[conjugate]") {
         // shape does not change
         REQUIRE(m.getRows() == 3);
         REQUIRE(m.getCols() == 4);
+      }
+    }
+  }
+  GIVEN("A real matrix of shape (3,4)") {
+    sclMath::RealMatrix m(3, 3);
+    m.set(0, 0, 1);
+    m.set(1, 3, 2);
+    m.set(2, 1, 3.1);
+    m.set(2, 0, 4);
+
+    m.set(2, 2, 5);
+    m.set(0, 2, 3.2);
+    m.set(1, 2, 2.1);
+    m.set(1, 1, 0);
+
+    WHEN("when the matrix is conjugated") {
+      m.conjugate();
+
+      THEN("the conjugated matrix is identical to the original ") {
+        REQUIRE(m.get(0, 0) == 1);
+        REQUIRE(m.get(1, 3) == 2);
+        REQUIRE(m.get(2, 1) == 3.1);
+        REQUIRE(m.get(2, 0) == 4);
+
+        REQUIRE(m.get(2, 2) == 5);
+        REQUIRE(m.get(0, 2) == 3.2);
+        REQUIRE(m.get(1, 2) == 2.1);
+        REQUIRE(m.get(1, 1) == 0);
       }
     }
   }
