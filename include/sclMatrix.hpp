@@ -1,16 +1,23 @@
 #pragma once
 
+#include "sclMathErrors.hpp"
 #include <complex>
+#include <iostream>
+#include <memory>
 #include <type_traits>
 #include <vector>
 
 namespace sclMath {
 typedef std::complex<double> ComplexScalar;
-typedef double Scalar;
+typedef double RealScalar;
 
-class matrix {
+template <typename T>
+concept c_ScalarType =
+    std::is_same_v<T, RealScalar> || std::is_same_v<T, ComplexScalar>;
+
+template <c_ScalarType T_SCALAR> class matrix {
 private:
-  std::vector<ComplexScalar> m_data;
+  std::vector<T_SCALAR> m_data;
   std::size_t rows;
   std::size_t cols;
 
