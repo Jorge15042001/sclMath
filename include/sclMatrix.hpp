@@ -62,7 +62,6 @@ public:
   RealScalar norm() const;
 
   // TODO: is transpose methood missing
-  bool isHermitian() const;
 
   RealMatrix &scale(const RealScalar s);
 
