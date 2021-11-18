@@ -67,10 +67,8 @@ TEST_CASE("sum right output ComplexMatrix", "[sum]") {
 
   CHECK(m2.getRows() == m2Result.getRows());
   CHECK(m2.getCols() == m2Result.getCols());
-
   CHECK(m3.getRows() == m3Result.getRows());
   CHECK(m3.getCols() == m3Result.getCols());
-
   CHECK(m4.getRows() == m4Result.getRows());
   CHECK(m4.getCols() == m4Result.getCols());
 
@@ -198,11 +196,11 @@ TEST_CASE("sum right output RealMatrix with ComplexMatrix", "[sum]") {
   sclMath::RealMatrix m4(9, 9);
   sclMath::ComplexMatrix m5(2, 2);
 
-  sclMath::matrix m1Result = m1 + m1;
-  sclMath::matrix m2Result = m2 + m2;
-  sclMath::matrix m3Result = m3 + m3;
-  sclMath::matrix m4Result = m4 + m4;
-  sclMath::matrix m5Result = m5 + m5;
+  sclMath::ComplexMatrix m1Result = m1 + m1;
+  sclMath::RealMatrix m2Result = m2 + m2;
+  sclMath::ComplexMatrix m3Result = m3 + m3;
+  sclMath::RealMatrix m4Result = m4 + m4;
+  sclMath::ComplexMatrix m5Result = m5 + m5;
 
   CHECK(m1.getRows() == m1Result.getRows());
   CHECK(m1.getCols() == m1Result.getCols());
