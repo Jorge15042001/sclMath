@@ -46,7 +46,7 @@ public:
   /* std::ostream &operator<<(std::ostream &os, const matrix &m); */
 };
 
-template <c_ScalarType RealScalar> class RealMatrix {
+class RealMatrix {
 private:
   std::vector<RealScalar> m_data;
   std::size_t rows;
