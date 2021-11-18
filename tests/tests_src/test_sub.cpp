@@ -173,7 +173,7 @@ SCENARIO("matrix sub result", "[sub]") {
         sclMath::ComplexMatrix expectedResult(3, 4);
 
         expectedResult.set(0, 0, {1});
-        expectedResult.set(0, 1, {-2, 1});
+        expectedResult.set(0, 1, {-2, -1});
         expectedResult.set(0, 2, {1, -2});
         expectedResult.set(0, 3, {-3});
 
