@@ -15,37 +15,63 @@ template <typename T>
 concept c_ScalarType =
     std::is_same_v<T, RealScalar> || std::is_same_v<T, ComplexScalar>;
 
-template <c_ScalarType T_SCALAR> class matrix {
+class ComplexMatrix {
 private:
-  std::vector<T_SCALAR> m_data;
+  std::vector<ComplexScalar> m_data;
   std::size_t rows;
   std::size_t cols;
 
 public:
-  matrix(const std::int64_t rows, const std::int64_t cols);
+  ComplexMatrix(const std::int64_t rows, const std::int64_t cols);
 
-  matrix &transpose();
-  matrix &conjugate();
-  matrix &dagger();
+  ComplexMatrix &transpose();
+  ComplexMatrix &conjugate();
+  ComplexMatrix &dagger();
 
-  T_SCALAR trace() const;
+  ComplexScalar trace() const;
   RealScalar normSquared() const;
   RealScalar norm() const;
 
   // TODO: is transpose methood missing
   bool isHermitian() const;
 
-  matrix &scale(const T_SCALAR s);
+  ComplexMatrix &scale(const ComplexScalar s);
 
   std::size_t getRows() const;
   std::size_t getCols() const;
 
-  void set(const std::size_t i, const std::size_t j, const T_SCALAR s);
+  void set(const std::size_t i, const std::size_t j, const ComplexScalar s);
 
-  T_SCALAR get(const std::int64_t i, const std::int64_t j) const;
+  ComplexScalar get(const std::int64_t i, const std::int64_t j) const;
   /* std::ostream &operator<<(std::ostream &os, const matrix &m); */
 };
 
-typedef matrix<RealScalar> RealMatrix;
-typedef matrix<ComplexScalar> ComplexMatrix;
+template <c_ScalarType RealScalar> class RealMatrix {
+private:
+  std::vector<RealScalar> m_data;
+  std::size_t rows;
+  std::size_t cols;
+
+public:
+  RealMatrix(const std::int64_t rows, const std::int64_t cols);
+
+  RealMatrix &transpose();
+
+  RealScalar trace() const;
+  RealScalar normSquared() const;
+  RealScalar norm() const;
+
+  // TODO: is transpose methood missing
+  bool isHermitian() const;
+
+  RealMatrix &scale(const RealScalar s);
+
+  std::size_t getRows() const;
+  std::size_t getCols() const;
+
+  void set(const std::size_t i, const std::size_t j, const RealScalar s);
+
+  RealScalar get(const std::int64_t i, const std::int64_t j) const;
+  /* std::ostream &operator<<(std::ostream &os, const matrix &m); */
+};
 } // namespace sclMath
