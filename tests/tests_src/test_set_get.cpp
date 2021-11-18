@@ -59,7 +59,7 @@ SCENARIO("getting and setting in matrix", "[set,get]") {
         REQUIRE(m.get(2, 1) == 2);
         REQUIRE(m.get(3, 0) == 0.5);
 
-        REQUIRE(m.get(3, 1) == 1);
+        REQUIRE(m.get(3, 1) == 0.1);
         REQUIRE(m.get(2, 2) == -9);
         REQUIRE(m.get(1, 2) == -0.43);
         REQUIRE(m.get(1, 1) == 0.22);
