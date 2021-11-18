@@ -29,13 +29,13 @@ ComplexScalar innerProduct(const RealMatrix &m1, const ComplexMatrix &m2);
 // distance
 // ###########################################################################################################
 // distance for sclmath::complexmatrix, sclmath::complexmatrix
-ComplexScalar distance(const ComplexMatrix &m1, const ComplexMatrix &m2);
+RealScalar distance(const ComplexMatrix &m1, const ComplexMatrix &m2);
 // distance for sclmath::realmatrix, sclmath::realmatrix
 RealScalar distance(const RealMatrix &m1, const RealMatrix &m2);
-// distance for sclMath::ComplexMatrix, sclMath::RealMatrix
-ComplexScalar distance(const ComplexMatrix &m1, const RealMatrix &m2);
+// distance for sclMath::ComplexMatrix, sclMath::RealMatrixu
+RealScalar distance(const ComplexMatrix &m1, const RealMatrix &m2);
 // distance for sclMath::RealMatrix, sclMath::ComplexMatrix
-ComplexScalar distance(const RealMatrix &m1, const ComplexMatrix &m2);
+RealScalar distance(const RealMatrix &m1, const ComplexMatrix &m2);
 
 // angle
 // ###########################################################################################################
