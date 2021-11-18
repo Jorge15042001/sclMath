@@ -107,7 +107,7 @@ std::ostream &operator<<(std::ostream &os, const RealMatrix &m) {
 
 } // namespace sclMath
 namespace sclMath {
-RealMatrix::RealMatrix(const std::int64_t rows, const std::int64_t cols)
+ComplexMatrix::ComplexMatrix(const std::int64_t rows, const std::int64_t cols)
     : rows(rows), cols(cols), m_data(rows * cols) {
   sclMathError::ASSERT2(rows > 0,
                         " number of rows can not be negative or zero");
@@ -115,21 +115,21 @@ RealMatrix::RealMatrix(const std::int64_t rows, const std::int64_t cols)
                         " number of columns can not be negative or zero");
 }
 
-std::size_t RealMatrix::getRows() const { return this->rows; }
+std::size_t ComplexMatrix::getRows() const { return this->rows; }
 
-std::size_t RealMatrix::getCols() const { return this->cols; }
+std::size_t ComplexMatrix::getCols() const { return this->cols; }
 
-RealMatrix &RealMatrix::conjugate() {
+ComplexMatrix &ComplexMatrix::conjugate() {
+  // TODO: use copy instead of reference in rage forloop, evaluate performace
   for (auto &c : this->m_data) {
     c = std::conj(c);
   }
   return *this;
 }
 
-template <c_ScalarType T_SCALAR>
-RealMatrix<T_SCALAR> &RealMatrix<T_SCALAR>::transpose() {
+ComplexMatrix &ComplexMatrix::transpose() {
   // AT[i,] = A[j,i]
-  std::vector<T_SCALAR> new_m_data(this->m_data.size());
+  std::vector<ComplexScalar> new_m_data(this->m_data.size());
 
   auto f_finalPosition = [this](const std::size_t x) {
     return (x % this->cols) * this->rows + x / this->cols;
@@ -144,38 +144,35 @@ RealMatrix<T_SCALAR> &RealMatrix<T_SCALAR>::transpose() {
   return *this;
 }
 
-template <c_ScalarType T_SCALAR>
-RealMatrix<T_SCALAR> &RealMatrix<T_SCALAR>::dagger() {
+ComplexMatrix &ComplexMatrix::dagger() {
   this->conjugate();
   this->transpose();
 
   return *this;
 }
 
-template <c_ScalarType T_SCALAR> T_SCALAR RealMatrix<T_SCALAR>::trace() const {
+ComplexScalar ComplexMatrix::trace() const {
   sclMathError::ASSERT2(this->rows == this->cols,
                         "trace() is not valid for non squared matrices");
-  T_SCALAR result = 0;
+  ComplexScalar result = 0;
   for (std::size_t i = 0; i < this->rows; i++) {
     result += this->get(i, i);
   }
   return result;
 }
 
-template <c_ScalarType T_SCALAR>
-RealScalar RealMatrix<T_SCALAR>::normSquared() const {
+RealScalar ComplexMatrix::normSquared() const {
   RealScalar reuslt = 0;
   for (const ComplexScalar s : this->m_data)
     // TODO: check if std::conj(float) may cause perfonmance issues
     reuslt += (s * std::conj(s)).real();
   return reuslt;
 }
-template <c_ScalarType T_SCALAR> RealScalar RealMatrix<T_SCALAR>::norm() const {
+RealScalar ComplexMatrix::norm() const {
   return std::sqrt(this->normSquared());
 }
 
-template <c_ScalarType T_SCALAR>
-bool RealMatrix<T_SCALAR>::isHermitian() const {
+bool ComplexMatrix::isHermitian() const {
   // if is not square matrix return false;
   if (this->rows != this->cols)
     return false;
@@ -191,16 +188,15 @@ bool RealMatrix<T_SCALAR>::isHermitian() const {
   return true;
 }
 // TODO: no everload for sclMath::Scalar and sclMath::ComplexScalar
-template <c_ScalarType T_SCALAR>
-RealMatrix<T_SCALAR> &RealMatrix<T_SCALAR>::scale(const T_SCALAR c) {
-  for (T_SCALAR &s : this->m_data)
+ComplexMatrix &ComplexMatrix::scale(const ComplexScalar c) {
+  // TODO: rage for loop with copy insted of reference
+  for (auto &s : this->m_data)
     s *= c;
   return *this;
 }
 
-template <c_ScalarType T_SCALAR>
-T_SCALAR RealMatrix<T_SCALAR>::get(const std::int64_t i,
-                                   const std::int64_t j) const {
+ComplexScalar ComplexMatrix::get(const std::int64_t i,
+                                 const std::int64_t j) const {
   sclMathError::ASSERT2(i >= 0 && i < this->rows,
                         "requested row index is out of range");
   sclMathError::ASSERT2(j >= 0 && j < this->cols,
@@ -210,9 +206,8 @@ T_SCALAR RealMatrix<T_SCALAR>::get(const std::int64_t i,
 
   return this->m_data[index];
 }
-template <c_ScalarType T_SCALAR>
-void RealMatrix<T_SCALAR>::set(const std::size_t i, const std::size_t j,
-                               const T_SCALAR s) {
+void ComplexMatrix::set(const std::size_t i, const std::size_t j,
+                        const ComplexScalar s) {
   sclMathError::ASSERT2(i >= 0 && i < this->rows,
                         "requested row index is out of range");
   sclMathError::ASSERT2(j >= 0 && j < this->cols,
@@ -221,12 +216,11 @@ void RealMatrix<T_SCALAR>::set(const std::size_t i, const std::size_t j,
   this->m_data[this->cols * i + j] = s;
 }
 
-template <c_ScalarType T_SCALAR>
-std::ostream &operator<<(std::ostream &os, const RealMatrix<T_SCALAR> &m) {
+std::ostream &operator<<(std::ostream &os, const ComplexMatrix &m) {
   const std::size_t rows = m.getRows();
   const std::size_t cols = m.getCols();
 
-  os << "sclMath::Matrix[" << rows << "," << cols << "]\n{";
+  os << "sclMath::ComplexMatrix[" << rows << "," << cols << "]\n{";
 
   for (std::size_t i = 0; i < rows; i++) {
     os << "{";
