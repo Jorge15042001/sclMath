@@ -5,7 +5,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
-SCENARIO("scale matrix", "[scale]") {
+
+// TODO: test for RealMatrix with complex scalar?
+// TODO: test for ComplexMatrix with real scalar?
+SCENARIO("scale complex matrix with complex scalar", "[scale]") {
   sclMath::ComplexMatrix m(3, 4);
   // check the shape
   REQUIRE(m.getRows() == 3);
@@ -91,7 +94,7 @@ SCENARIO("scale matrix", "[scale]") {
     }
   }
 }
-SCENARIO("scale matrix", "[scale]") {
+SCENARIO("scale real matrix with real scalar", "[scale]") {
   sclMath::RealMatrix m(3, 4);
   // check the shape
   REQUIRE(m.getRows() == 3);
