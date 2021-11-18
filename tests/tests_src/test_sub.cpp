@@ -117,10 +117,10 @@ SCENARIO("matrix sub result", "[sub]") {
         expectedResult.set(1, 2, 0);
         expectedResult.set(1, 3, 0);
 
-        expectedResult.set(2, 0, 1);
+        expectedResult.set(2, 0, 3);
         expectedResult.set(2, 1, -2);
         expectedResult.set(2, 2, 0);
-        expectedResult.set(2, 3, 3);
+        expectedResult.set(2, 3, 1);
 
         REQUIRE(expectedResult == result);
       }
