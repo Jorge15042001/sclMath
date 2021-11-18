@@ -30,8 +30,8 @@ SCENARIO("matrix sub result", "[sub]") {
     m2.set(2, 2, sclMath::ComplexScalar(1, 0));
 
     WHEN("a matrix is subtracted with the nullity") {
-      const sclMath::matrix copyOfm1 = m1 + zero_3_4;
-      const sclMath::matrix copyOfm2 = m2 + zero_3_4;
+      const sclMath::ComplexMatrix copyOfm1 = m1 + zero_3_4;
+      const sclMath::ComplexMatrix copyOfm2 = m2 + zero_3_4;
 
       THEN("the result is the same matrix") {
         REQUIRE(m1 == copyOfm1);
@@ -39,7 +39,7 @@ SCENARIO("matrix sub result", "[sub]") {
       }
     }
     WHEN("B is subtracted from A together") {
-      const sclMath::matrix result = m1 - m2;
+      const sclMath::ComplexMatrix result = m1 - m2;
 
       // TODO: complete the test
       THEN("the result should match the definition of matrix addition") {
@@ -91,8 +91,8 @@ SCENARIO("matrix sub result", "[sub]") {
     m2.set(2, 2, 0);
 
     WHEN("a matrix is subtracted with the nullity") {
-      const sclMath::matrix copyOfm1 = m1 + zero_3_4;
-      const sclMath::matrix copyOfm2 = m2 + zero_3_4;
+      const sclMath::RealMatrix copyOfm1 = m1 + zero_3_4;
+      const sclMath::RealMatrix copyOfm2 = m2 + zero_3_4;
 
       THEN("the result is the same matrix") {
         REQUIRE(m1 == copyOfm1);
@@ -100,7 +100,7 @@ SCENARIO("matrix sub result", "[sub]") {
       }
     }
     WHEN("B is subtracted from A together") {
-      const sclMath::matrix result = m1 - m2;
+      const sclMath::RealMatrix result = m1 - m2;
 
       // TODO: complete the test
       THEN("the result should match the definition of matrix addition") {
@@ -156,8 +156,8 @@ SCENARIO("matrix sub result", "[sub]") {
     identity.set(3, 3, 1);
 
     WHEN("a matrix is substracted by the nullity") {
-      const sclMath::matrix copyOfm1 = m1 + zero_3_4;
-      const sclMath::matrix copyOfm2 = m2 + zero_3_4;
+      const sclMath::ComplexMatrix copyOfm1 = m1 + zero_3_4;
+      const sclMath::ComplexMatrix copyOfm2 = m2 + zero_3_4;
 
       THEN("the result is the same matrix") {
         REQUIRE(m1 == copyOfm1);
@@ -165,7 +165,7 @@ SCENARIO("matrix sub result", "[sub]") {
       }
     }
     WHEN("A and B are substracted togeter") {
-      const sclMath::matrix result = m1 - m2;
+      const sclMath::ComplexMatrix result = m1 - m2;
 
       // TODO: complete the test
       THEN("the result should match the definition of matrix substraction") {
