@@ -40,7 +40,7 @@ RealScalar distance(const RealMatrix &m1, const ComplexMatrix &m2);
 // angle
 // ###########################################################################################################
 //  angle for sclMath::ComplexMatrix, sclMath::ComplexMatrix
-ComplexScalar angle(const ComplexMatrix &m1, const ComplexMatrix &m2);
+RealScalar angle(const ComplexMatrix &m1, const ComplexMatrix &m2);
 //  angle for sclMath::RealMatrix, sclMath::RealMatrix
 RealScalar angle(const RealMatrix &m1, const RealMatrix &m2);
 
