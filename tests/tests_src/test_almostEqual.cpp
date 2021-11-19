@@ -4,9 +4,6 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include <cmath>
-#include <iostream>
-#include <math.h>
-#include <vector>
 
 TEST_CASE("real numbers", "[AlmostEqual]") {
   const sclMath::RealScalar a = 1;
