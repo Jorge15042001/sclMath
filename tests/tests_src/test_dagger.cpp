@@ -1,11 +1,7 @@
-
-
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclComplexMatrix.hpp"
+#include "sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 SCENARIO("dagger of matrix", "[dagger]") {
   GIVEN("A comlex matrix of shape (3,4)") {
     sclMath::ComplexMatrix m(3, 4);
