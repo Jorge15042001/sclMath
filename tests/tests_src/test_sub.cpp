@@ -28,8 +28,8 @@ SCENARIO("matrix sub result", "[sub]") {
     m2.set(2, 2, sclMath::ComplexScalar(1, 0));
 
     WHEN("a matrix is subtracted with the nullity") {
-      const sclMath::ComplexMatrix copyOfm1 = m1 + zero_3_4;
-      const sclMath::ComplexMatrix copyOfm2 = m2 + zero_3_4;
+      const sclMath::ComplexMatrix copyOfm1 = m1 - zero_3_4;
+      const sclMath::ComplexMatrix copyOfm2 = m2 - zero_3_4;
 
       THEN("the result is the same matrix") {
         REQUIRE(m1 == copyOfm1);
@@ -89,8 +89,8 @@ SCENARIO("matrix sub result", "[sub]") {
     m2.set(2, 2, 0);
 
     WHEN("a matrix is subtracted with the nullity") {
-      const sclMath::RealMatrix copyOfm1 = m1 + zero_3_4;
-      const sclMath::RealMatrix copyOfm2 = m2 + zero_3_4;
+      const sclMath::RealMatrix copyOfm1 = m1 - zero_3_4;
+      const sclMath::RealMatrix copyOfm2 = m2 - zero_3_4;
 
       THEN("the result is the same matrix") {
         REQUIRE(m1 == copyOfm1);
@@ -154,8 +154,8 @@ SCENARIO("matrix sub result", "[sub]") {
     identity.set(3, 3, 1);
 
     WHEN("a matrix is substracted by the nullity") {
-      const sclMath::ComplexMatrix copyOfm1 = m1 + zero_3_4;
-      const sclMath::ComplexMatrix copyOfm2 = m2 + zero_3_4;
+      const sclMath::ComplexMatrix copyOfm1 = m1 - zero_3_4;
+      const sclMath::ComplexMatrix copyOfm2 = m2 - zero_3_4;
 
       THEN("the result is the same matrix") {
         REQUIRE(m1 == copyOfm1);
