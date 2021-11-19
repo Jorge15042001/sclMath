@@ -11,10 +11,6 @@ namespace sclMath {
 typedef std::complex<double> ComplexScalar;
 typedef double RealScalar;
 
-template <typename T>
-concept c_ScalarType =
-    std::is_same_v<T, RealScalar> || std::is_same_v<T, ComplexScalar>;
-
 class ComplexMatrix {
 private:
   std::vector<ComplexScalar> m_data;
