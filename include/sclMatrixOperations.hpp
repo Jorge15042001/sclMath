@@ -7,8 +7,10 @@
 #include "sclMathErrors.hpp"
 #include "sclMathUtility.hpp"
 #include "sclMatrix.hpp"
-#include "sclMatrixAddition.hpp"    //TODO: remove
-#include "sclMatrixSubtraction.hpp" //TODO: remove
+#include "sclMatrixAddition.hpp"       //TODO: remove
+#include "sclMatrixMultiplication.hpp" //TODO: remove
+#include "sclMatrixScaling.hpp"        //TODO: remove
+#include "sclMatrixSubtraction.hpp"    //TODO: remove
 #include <cmath>
 #include <cstdint>
 #include <iostream>
