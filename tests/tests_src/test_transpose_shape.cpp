@@ -1,11 +1,7 @@
-
-
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclComplexMatrix.hpp"
+#include "sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 SCENARIO("conjugate of complexmatrix", "[transpose]") {
   GIVEN("square complex matrices with shape (n,m)") {
     sclMath::ComplexMatrix m1(1, 1);
