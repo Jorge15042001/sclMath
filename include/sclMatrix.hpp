@@ -43,8 +43,8 @@ public:
   void set(const std::size_t i, const std::size_t j, const ComplexScalar s);
 
   ComplexScalar get(const std::int64_t i, const std::int64_t j) const;
-  /* std::ostream &operator<<(std::ostream &os, const matrix &m); */
 };
+std::ostream &operator<<(std::ostream &os, const ComplexMatrix &m);
 
 class RealMatrix {
 private:
@@ -71,6 +71,6 @@ public:
   void set(const std::size_t i, const std::size_t j, const RealScalar s);
 
   RealScalar get(const std::int64_t i, const std::int64_t j) const;
-  /* std::ostream &operator<<(std::ostream &os, const matrix &m); */
 };
+std::ostream &operator<<(std::ostream &os, const RealMatrix &m);
 } // namespace sclMath
