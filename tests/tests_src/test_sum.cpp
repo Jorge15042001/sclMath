@@ -1,10 +1,7 @@
-
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclMatrixAddition.hpp"
+#include "sclMatrixComparison.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 SCENARIO("matrix addition result", "[result]") {
 
   GIVEN("2 complexx matrices of compatible sizes") {
