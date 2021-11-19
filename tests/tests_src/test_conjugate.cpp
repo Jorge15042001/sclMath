@@ -1,6 +1,6 @@
 #include "sclComplexMatrix.hpp"
-#include "sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
+
 SCENARIO("conjugate of matrix", "[conjugate]") {
   GIVEN("A complex matrix of shape (3,4)") {
     sclMath::ComplexMatrix m(3, 4);
