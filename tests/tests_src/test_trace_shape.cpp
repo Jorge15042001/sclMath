@@ -1,9 +1,7 @@
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclComplexMatrix.hpp"
+#include "sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 TEST_CASE("trace shape of non-square complexmatrix", "[trace]") {
   sclMath::ComplexMatrix m1(1, 2);
   sclMath::ComplexMatrix m2(3, 1);
