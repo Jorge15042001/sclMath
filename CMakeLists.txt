@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.21)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)# get compile_commands.json
 find_package(Catch2 3 REQUIRED) # require for testing the code
 
