@@ -2,7 +2,7 @@
 #include <complex>
 #include <vector>
 
-namespace sclaMath {
+namespace sclMath {
 typedef std::complex<double> ComplexScalar;
 typedef double RealScalar;
 class RealMatrix {
