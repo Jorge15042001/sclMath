@@ -1,8 +1,6 @@
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclComplexMatrix.hpp"
+#include "sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <iostream>
-#include <vector>
 
 SCENARIO("setting in matrix", "[set]") {
   GIVEN("A comlex matrix of shape (4,4)") {

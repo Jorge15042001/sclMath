@@ -1,9 +1,6 @@
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclInnerProduct.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 TEST_CASE("innerProduct operation", "[innerProduct]") {
 
   sclMath::ComplexMatrix m1(3, 4);

@@ -1,12 +1,9 @@
+#include "sclComplexMatrix.hpp"
 #include "sclMathUtility.hpp"
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 #include <cmath>
-#include <iostream>
-#include <math.h>
-#include <vector>
 TEST_CASE("real numbers", "[AlmostEqual]") {
   const sclMath::RealScalar a = 1;
   const sclMath::RealScalar almost_a = a / std::sqrt(2) * std::sqrt(2);

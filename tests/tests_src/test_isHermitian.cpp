@@ -1,10 +1,6 @@
-
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclComplexMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 TEST_CASE("isHermitian operation for complex matrix", "[isHermitian]") {
 
   sclMath::ComplexMatrix m1(3, 4);

@@ -1,10 +1,6 @@
-
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclComplexMatrix.hpp"
+#include "sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
 
 // TODO: test for RealMatrix with complex scalar?
 // TODO: test for ComplexMatrix with real scalar?

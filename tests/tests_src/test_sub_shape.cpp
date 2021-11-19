@@ -1,11 +1,6 @@
-
-
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclMatrixSubtraction.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 TEST_CASE("sub of diferent shape complexmatrix ", "[sub]") {
   sclMath::ComplexMatrix m1(1, 2);
   sclMath::ComplexMatrix m2(3, 1);
@@ -99,12 +94,12 @@ TEST_CASE("sub of compatible non-square shape RealMatrix ", "[sub]") {
   sclMath::RealMatrix m5(2, 9);
   sclMath::RealMatrix m6(2, 9);
 
-  CHECK_NOTHROW(m1 + m2);
-  CHECK_NOTHROW(m2 + m1);
-  CHECK_NOTHROW(m3 + m4);
-  CHECK_NOTHROW(m4 + m4);
-  CHECK_NOTHROW(m5 + m6);
-  CHECK_NOTHROW(m6 + m5);
+  CHECK_NOTHROW(m1 - m2);
+  CHECK_NOTHROW(m2 - m1);
+  CHECK_NOTHROW(m3 - m4);
+  CHECK_NOTHROW(m4 - m4);
+  CHECK_NOTHROW(m5 - m6);
+  CHECK_NOTHROW(m6 - m5);
 }
 TEST_CASE("sub  of same shape RealMatrix", "[sub]") {
   sclMath::RealMatrix m1(1, 1);
@@ -170,12 +165,12 @@ TEST_CASE("sub of compatible non-square shape RealMatrix with ComplexMatrix",
   sclMath::RealMatrix m5(2, 9);
   sclMath::ComplexMatrix m6(2, 9);
 
-  CHECK_NOTHROW(m1 + m2);
-  CHECK_NOTHROW(m2 + m1);
-  CHECK_NOTHROW(m3 + m4);
-  CHECK_NOTHROW(m4 + m4);
-  CHECK_NOTHROW(m5 + m6);
-  CHECK_NOTHROW(m6 + m5);
+  CHECK_NOTHROW(m1 - m2);
+  CHECK_NOTHROW(m2 - m1);
+  CHECK_NOTHROW(m3 - m4);
+  CHECK_NOTHROW(m4 - m4);
+  CHECK_NOTHROW(m5 - m6);
+  CHECK_NOTHROW(m6 - m5);
 }
 TEST_CASE("sub  of same shape RealMatrix with ComplexMatrix", "[sub]") {
   sclMath::ComplexMatrix m1(1, 1);

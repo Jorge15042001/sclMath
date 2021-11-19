@@ -1,9 +1,8 @@
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclMatrixComparison.hpp"
+#include "sclMatrixMultiplication.hpp"
+
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 SCENARIO("matrix multiplication result", "[result]") {
 
   GIVEN("2  complex matrices of compatible sizes") {
