@@ -33,4 +33,4 @@ public:
   RealScalar get(const std::int64_t i, const std::int64_t j) const;
 };
 std::ostream &operator<<(std::ostream &os, const RealMatrix &m);
-} // namespace sclaMath
+} // namespace sclMath
