@@ -1,11 +1,6 @@
-
-
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclMatrixSubtraction.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 TEST_CASE("sub of diferent shape complexmatrix ", "[sub]") {
   sclMath::ComplexMatrix m1(1, 2);
   sclMath::ComplexMatrix m2(3, 1);
