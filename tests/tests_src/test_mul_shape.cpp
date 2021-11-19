@@ -1,9 +1,6 @@
-#include "sclMatrix.hpp"
-#include "sclMatrixOperations.hpp"
+#include "sclMatrixMultiplication.hpp"
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
+
 TEST_CASE("mul of incompatible shapes complex matrices ", "[mul]") {
   sclMath::ComplexMatrix m1(1, 2);
   sclMath::ComplexMatrix m2(3, 1);
