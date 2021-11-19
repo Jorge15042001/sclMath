@@ -1,6 +1,7 @@
 #pragma once
 
 #include "sclCopyMatrix.hpp"   //TODO: remove
+#include "sclDistance.hpp"     //TODO remove
 #include "sclInnerProduct.hpp" //TODO: remove
 #include "sclMathErrors.hpp"
 #include "sclMathUtility.hpp"
