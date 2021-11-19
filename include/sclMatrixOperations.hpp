@@ -12,6 +12,3 @@
 #include "sclMatrixMultiplication.hpp" //TODO: remove
 #include "sclMatrixScaling.hpp"        //TODO: remove
 #include "sclMatrixSubtraction.hpp"    //TODO: remove
-#include <cmath>
-#include <cstdint>
-#include <iostream>
