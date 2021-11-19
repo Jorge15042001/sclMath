@@ -13,9 +13,11 @@ elseif (${CMAKE_BUILD_TYPE} STREQUAL "RELEASE")
 endif()
 
 # compile the library
-FILE(GLOB sclMath_src src/*)
+FILE(GLOB sclMathMatrix_src src/sclMatrix/*)
 add_library(sclMath SHARED
-  ${sclMath_src})
+  ${sclMathMatrix_src})
+set_target_properties(sclMath PROPERTIES LINKER_LANGUAGE CXX)
+
 
 #include list dir
 target_include_directories(sclMath PUBLIC
