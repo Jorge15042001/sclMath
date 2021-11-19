@@ -205,7 +205,7 @@ SCENARIO("matrix multiplication result", "[result]") {
         expectedResult.set(0, 3, {3, -1});
 
         expectedResult.set(1, 1, {6, 3});
-        expectedResult.set(1, 1, {0, 3});
+        expectedResult.set(1, 2, {0, 3});
         expectedResult.set(1, 3, {9, -3});
 
         expectedResult.set(2, 1, {2, 1});
