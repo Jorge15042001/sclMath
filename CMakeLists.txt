@@ -9,6 +9,8 @@ project(sclMath
 
 SET(CMAKE_CXX_FLAGS  "-w -Werror -Wpedantic -Wall -Wextra -Wconversion -Wsign-compare -Wsign-conversion ")
 SET(CMAKE_CXX_STANDARD 20)
+
+# wont work because in a header only definitios
 SET(CMAKE_BUILD_TYPE DEBUG)
 if (${CMAKE_BUILD_TYPE} STREQUAL "DEBUG")
   add_compile_definitions(SCLMATH_DEBUG_BUILD)
@@ -18,46 +20,60 @@ endif()
 
 # compile the library
 FILE(GLOB sclMathMatrix_src src/sclMatrix/*)
-add_library(sclMath SHARED
-  ${sclMathMatrix_src})
-set_target_properties(sclMath PROPERTIES LINKER_LANGUAGE CXX)
+add_library(sclMath INTERFACE)
+
+
+include (GNUInstallDirs)
+
 
 
 #include list dir
-target_include_directories(sclMath PUBLIC
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
-)
+target_include_directories(
+  ${PROJECT_NAME}
+
+  INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
+            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  )
+
+# write versioning of the files
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
-    "${PROJECT_BINARY_DIR}/sclMathConfigVersion.cmake"
+    "${PROJECT_NAME}ConfigVersion.cmake" 
     VERSION 0.1
     COMPATIBILITY AnyNewerVersion
 )
 
 
 #installing the library in the system
-install(TARGETS sclMath
-    EXPORT sclMathTargets
-    LIBRARY DESTINATION lib COMPONENT Runtime
-    ARCHIVE DESTINATION lib COMPONENT Development
-    RUNTIME DESTINATION bin COMPONENT Runtime
-    PUBLIC_HEADER DESTINATION include COMPONENT Development
-    BUNDLE DESTINATION bin COMPONENT Runtime
+install(TARGETS ${PROJECT_NAME}
+    EXPORT ${PROJECT_NAME}_Targets
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
 include(CMakePackageConfigHelpers)
-configure_package_config_file(
-    "${PROJECT_SOURCE_DIR}/cmake/sclMathConfig.cmake.in"
-    "${PROJECT_BINARY_DIR}/sclMathConfig.cmake"
-    INSTALL_DESTINATION lib/cmake/sclMath
+configure_package_config_file( 
+        "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
+        "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+        INSTALL_DESTINATION
+        ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
 )
 
-install(EXPORT sclMathTargets DESTINATION lib/cmake/sclMath)
-install(FILES "${PROJECT_BINARY_DIR}/sclMathConfigVersion.cmake"
-              "${PROJECT_BINARY_DIR}/sclMathConfig.cmake"
-        DESTINATION lib/cmake/sclMath)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
+
+
+install(EXPORT ${PROJECT_NAME}_Targets
+        FILE ${PROJECT_NAME}Targets.cmake
+        NAMESPACE ${PROJECT_NAME}::
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
+
+install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+              "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
+
+
+
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/sclMath DESTINATION include)
 
 
 # compile the tests
