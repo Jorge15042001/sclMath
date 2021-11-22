@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.21)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)# get compile_commands.json
 find_package(Catch2 3 REQUIRED) # require for testing the code
 
-project(sclMath)
+project(sclMath
+  DESCRIPTION "A header only c++ library that provides an easy interface and simpe interface to make simple linear algebra calculations"
+  )
 
 SET(CMAKE_CXX_FLAGS  "-w -Werror -Wpedantic -Wall -Wextra -Wconversion -Wsign-compare -Wsign-conversion ")
 SET(CMAKE_CXX_STANDARD 20)
