@@ -51,4 +51,7 @@ concept c_Matrix = std::is_same_v<T, Matrix<RealScalar>> ||
 
 std::ostream &operator<<(std::ostream &os, const c_Matrix auto &m);
 
+typedef Matrix<RealScalar> RealMatrix;
+typedef Matrix<ComplexScalar> ComplexMatrix;
+
 } // namespace sclMath
