@@ -1,5 +1,5 @@
-#include "sclMatrixAddition.hpp"
-#include "sclMatrixComparison.hpp"
+#include "sclMatrix/sclMatrixAddition.hpp"
+#include "sclMatrix/sclMatrixComparison.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 SCENARIO("matrix addition result", "[result]") {

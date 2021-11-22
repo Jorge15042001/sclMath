@@ -1,4 +1,4 @@
-#include "sclMatrixAddition.hpp"
+#include "sclMatrix/sclMatrixAddition.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("sum of diferent shape ComplexMatrix ", "[sum]") {

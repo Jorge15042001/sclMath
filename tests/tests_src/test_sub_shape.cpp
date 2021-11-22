@@ -1,4 +1,4 @@
-#include "sclMatrixSubtraction.hpp"
+#include "sclMatrix/sclMatrixSubtraction.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("sub of diferent shape complexmatrix ", "[sub]") {

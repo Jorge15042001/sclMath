@@ -1,6 +1,6 @@
-#include "sclComplexMatrix.hpp"
-#include "sclMathUtility.hpp"
-#include "sclRealMatrix.hpp"
+#include "sclMatrix/sclComplexMatrix.hpp"
+#include "sclMatrix/sclMathUtility.hpp"
+#include "sclMatrix/sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 #include <cmath>

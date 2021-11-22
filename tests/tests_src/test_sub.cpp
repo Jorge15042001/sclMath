@@ -1,5 +1,5 @@
-#include "sclMatrixComparison.hpp"
-#include "sclMatrixSubtraction.hpp"
+#include "sclMatrix/sclMatrixComparison.hpp"
+#include "sclMatrix/sclMatrixSubtraction.hpp"
 
 #include <catch2/catch_test_macros.hpp>
 

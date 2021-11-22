@@ -1,5 +1,5 @@
-#include "sclComplexMatrix.hpp"
-#include "sclRealMatrix.hpp"
+#include "sclMatrix/sclComplexMatrix.hpp"
+#include "sclMatrix/sclRealMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 SCENARIO("conjugate of complexmatrix", "[transpose]") {

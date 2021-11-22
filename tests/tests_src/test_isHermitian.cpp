@@ -1,4 +1,4 @@
-#include "sclComplexMatrix.hpp"
+#include "sclMatrix/sclComplexMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("isHermitian operation for complex matrix", "[isHermitian]") {
