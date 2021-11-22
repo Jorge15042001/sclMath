@@ -1,4 +1,4 @@
-#include "sclComplexMatrix.hpp"
+#include "sclMatrix/sclComplexMatrix.hpp"
 namespace sclMath {
 class ComplexVector {
   ComplexMatrix m_matrix; // a vector is just a (1xn) matrix

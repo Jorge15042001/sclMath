@@ -1,4 +1,4 @@
-#include "sclRealMatrix.hpp"
+#include "sclMatrix/sclRealMatrix.hpp"
 namespace sclMath {
 class RealVector {
   RealMatrix m_matrix; // a vector is just a (1xn) matrix
