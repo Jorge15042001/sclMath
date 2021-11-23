@@ -111,4 +111,3 @@ TEST_CASE("isHermitian operation for complex matrix", "[isHermitian]") {
   REQUIRE(hermitian1.isHermitian());
   REQUIRE(hermitian2.isHermitian());
 }
-// TODO:test for false cases
