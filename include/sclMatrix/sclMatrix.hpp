@@ -3,7 +3,7 @@
 #include "sclMathErrors.hpp"
 #include <cmath>
 #include <complex>
-#include <type_traits> //TODO:remove
+#include <type_traits>
 #include <vector>
 
 namespace sclMath {
