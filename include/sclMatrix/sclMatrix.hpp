@@ -36,6 +36,7 @@ public:
   RealScalar normSquared() const;
   RealScalar norm() const;
 
+  // TODO: isSymmetric missing
   bool isHermitian() const;
 
   Matrix<T_SCALAR> &scale(const T_SCALAR s);
