@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "sclMatrix/sclMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
@@ -150,29 +149,6 @@ TEST_CASE("isHermitian operation for real matrix", "[isHermitian]") {
   REQUIRE(identity1.isHermitian());
   REQUIRE(identity2.isHermitian());
   REQUIRE(identity3.isHermitian());
-
-  // diagonal matrices with complex entries aren't hermitian
-
-  sclMath::RealMatrix diagonal1(2, 2);
-  sclMath::RealMatrix diagonal2(5, 5);
-  sclMath::RealMatrix diagonal3(3, 3);
-
-  diagonal1.set(0, 0, 1);
-  diagonal1.set(1, 1, -2);
-
-  diagonal2.set(0, 0, 1);
-  diagonal2.set(1, 1, 1);
-  diagonal2.set(2, 2, 2);
-  diagonal2.set(3, 3, .2);
-  diagonal2.set(4, 4, 4);
-
-  diagonal3.set(0, 0, 0);
-  diagonal3.set(1, 1, -9);
-  diagonal3.set(2, 2, 8);
-
-  REQUIRE_FALSE(diagonal1.isHermitian());
-  REQUIRE_FALSE(diagonal2.isHermitian());
-  REQUIRE_FALSE(diagonal3.isHermitian());
 
   // diagonal matrices with all real entries in the diagonal are hermitian
   sclMath::RealMatrix realDiagonal1(2, 2);
