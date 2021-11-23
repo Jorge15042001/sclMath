@@ -19,7 +19,7 @@ elseif (${CMAKE_BUILD_TYPE} STREQUAL "RELEASE")
 endif()
 
 # compile the library
-FILE(GLOB sclMathMatrix_src src/sclMatrix/*)
+# FILE(GLOB sclMathMatrix_src src/sclMatrix/*)
 add_library(sclMath INTERFACE)
 
 
