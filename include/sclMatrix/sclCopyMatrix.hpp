@@ -1,9 +1,10 @@
-#include "sclCopyMatrix.hpp"
+#pragma once
+
+#include "sclMatrix.hpp"
 
 namespace sclMath {
-// ###########################################################################################################
-// copy matrix for sclMath::RealMatrix, sclMath::RealMatrix
-RealMatrix copyMatrix(const RealMatrix &m) {
+
+inline RealMatrix copyMatrix(const RealMatrix &m) {
   const std::size_t rows = m.getRows();
   const std::size_t cols = m.getCols();
 
@@ -18,7 +19,7 @@ RealMatrix copyMatrix(const RealMatrix &m) {
   return mCopy;
 }
 // copy matrix for sclMath::ComplexMatrix, sclMath::ComplexMatrix
-ComplexMatrix copyMatrix(const ComplexMatrix &m) {
+inline ComplexMatrix copyMatrix(const ComplexMatrix &m) {
   const std::size_t rows = m.getRows();
   const std::size_t cols = m.getCols();
 
@@ -33,7 +34,7 @@ ComplexMatrix copyMatrix(const ComplexMatrix &m) {
   return mCopy;
 }
 // TODO: copy real matrix as complex matrix, and viseversa
-ComplexMatrix copyMatrix_asComplex(const RealMatrix &m) {
+inline ComplexMatrix copyMatrix_asComplex(const RealMatrix &m) {
   const std::size_t rows = m.getRows();
   const std::size_t cols = m.getCols();
 

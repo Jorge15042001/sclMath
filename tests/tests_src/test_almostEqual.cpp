@@ -1,6 +1,4 @@
-#include "sclComplexMatrix.hpp"
-#include "sclMathUtility.hpp"
-#include "sclRealMatrix.hpp"
+#include "sclMatrix/sclMathUtility.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 #include <cmath>
@@ -91,9 +89,20 @@ TEST_CASE("ComplexNumbers with real Numbers", "[AlmostEqual]") {
   REQUIRE(sclMathUtility::areaAlmostEqual(c, almost_cc));
   REQUIRE(sclMathUtility::areaAlmostEqual(d, almost_dc));
 
+  REQUIRE(sclMathUtility::areaAlmostEqual(almost_ac, a));
+  REQUIRE(sclMathUtility::areaAlmostEqual(almost_bc, b));
+  REQUIRE(sclMathUtility::areaAlmostEqual(almost_cc, c));
+  REQUIRE(sclMathUtility::areaAlmostEqual(almost_dc, d));
+
   REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(a, almost_bc));
   REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(b, almost_cc));
   REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(a, almost_dc));
   REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(c, almost_dc));
   REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(b, almost_dc));
+
+  REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(almost_ac, b));
+  REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(almost_bc, c));
+  REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(almost_ac, d));
+  REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(almost_cc, d));
+  REQUIRE_FALSE(sclMathUtility::areaAlmostEqual(almost_bc, d));
 }

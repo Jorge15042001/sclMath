@@ -1,7 +1,6 @@
 #pragma once
 
 #include "sclAngle.hpp" //TODO: remove
-#include "sclComplexMatrix.hpp"
 #include "sclCopyMatrix.hpp"   //TODO: remove
 #include "sclDistance.hpp"     //TODO remove
 #include "sclInnerProduct.hpp" //TODO: remove
@@ -12,4 +11,3 @@
 #include "sclMatrixMultiplication.hpp" //TODO: remove
 #include "sclMatrixScaling.hpp"        //TODO: remove
 #include "sclMatrixSubtraction.hpp"    //TODO: remove
-#include "sclRealMatrix.hpp"

@@ -1,4 +1,4 @@
-#include "sclComplexMatrix.hpp"
+#include "sclMatrix/sclMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("isHermitian operation for complex matrix", "[isHermitian]") {
@@ -111,4 +111,90 @@ TEST_CASE("isHermitian operation for complex matrix", "[isHermitian]") {
   REQUIRE(hermitian1.isHermitian());
   REQUIRE(hermitian2.isHermitian());
 }
-// TODO:test for false cases
+TEST_CASE("isHermitian operation for real matrix", "[isHermitian]") {
+
+  sclMath::RealMatrix m1(3, 4);
+  sclMath::RealMatrix m2(3, 4);
+
+  REQUIRE_FALSE(m1.isHermitian());
+  REQUIRE_FALSE(m2.isHermitian());
+
+  // zero is hermitian
+  sclMath::RealMatrix zero1(4, 4);
+  sclMath::RealMatrix zero2(6, 6);
+  sclMath::RealMatrix zero3(7, 7);
+
+  REQUIRE(zero1.isHermitian());
+  REQUIRE(zero2.isHermitian());
+  REQUIRE(zero3.isHermitian());
+
+  // identity is hermitian
+  sclMath::RealMatrix identity1(2, 2);
+  sclMath::RealMatrix identity2(5, 5);
+  sclMath::RealMatrix identity3(3, 3);
+
+  identity1.set(0, 0, 1);
+  identity1.set(1, 1, 1);
+
+  identity2.set(0, 0, 1);
+  identity2.set(1, 1, 1);
+  identity2.set(2, 2, 1);
+  identity2.set(3, 3, 1);
+  identity2.set(4, 4, 1);
+
+  identity3.set(0, 0, 1);
+  identity3.set(1, 1, 1);
+  identity3.set(2, 2, 1);
+
+  REQUIRE(identity1.isHermitian());
+  REQUIRE(identity2.isHermitian());
+  REQUIRE(identity3.isHermitian());
+
+  // diagonal matrices with all real entries in the diagonal are hermitian
+  sclMath::RealMatrix realDiagonal1(2, 2);
+  sclMath::RealMatrix realDiagonal2(5, 5);
+  sclMath::RealMatrix realDiagonal3(3, 3);
+
+  realDiagonal1.set(0, 0, 10);
+  realDiagonal1.set(1, 1, 90);
+
+  realDiagonal2.set(0, 0, 7);
+  realDiagonal2.set(1, 1, 9);
+  realDiagonal2.set(2, 2, -10);
+  realDiagonal2.set(3, 3, .310);
+  realDiagonal2.set(4, 4, .0);
+
+  realDiagonal3.set(0, 0, 2);
+  realDiagonal3.set(1, 1, -9);
+  realDiagonal3.set(2, 2, 2);
+
+  REQUIRE(realDiagonal1.isHermitian());
+  REQUIRE(realDiagonal2.isHermitian());
+  REQUIRE(realDiagonal3.isHermitian());
+
+  // hermitian matrices
+
+  sclMath::RealMatrix hermitian1(3, 3);
+  sclMath::RealMatrix hermitian2(3, 3);
+
+  hermitian1.set(0, 0, 0);
+  hermitian1.set(0, 1, 5);
+  hermitian1.set(0, 2, -16);
+
+  hermitian1.set(1, 0, 5);
+  hermitian1.set(1, 1, 0);
+  hermitian1.set(1, 2, 7);
+
+  hermitian1.set(2, 0, -16);
+  hermitian1.set(2, 1, 7);
+  hermitian1.set(2, 2, -2.1);
+
+  hermitian2.set(0, 0, 7);
+  hermitian2.set(0, 1, 6);
+
+  hermitian2.set(1, 0, 6);
+  hermitian2.set(1, 1, -3);
+
+  REQUIRE(hermitian1.isHermitian());
+  REQUIRE(hermitian2.isHermitian());
+}

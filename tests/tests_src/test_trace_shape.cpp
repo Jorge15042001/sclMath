@@ -1,5 +1,4 @@
-#include "sclComplexMatrix.hpp"
-#include "sclRealMatrix.hpp"
+#include "sclMatrix/sclMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("trace shape of non-square complexmatrix", "[trace]") {

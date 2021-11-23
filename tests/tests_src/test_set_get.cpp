@@ -1,5 +1,4 @@
-#include "sclComplexMatrix.hpp"
-#include "sclRealMatrix.hpp"
+#include "sclMatrix/sclCopyMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 SCENARIO("getting and setting in matrix", "[set,get]") {

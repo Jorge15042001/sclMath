@@ -1,4 +1,4 @@
-#include "sclInnerProduct.hpp"
+#include "sclMatrix/sclInnerProduct.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("innerProduct of diferent shape matrix ", "[trace]") {

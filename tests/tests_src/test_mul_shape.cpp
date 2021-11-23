@@ -1,4 +1,4 @@
-#include "sclMatrixMultiplication.hpp"
+#include "sclMatrix/sclMatrixMultiplication.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 TEST_CASE("mul of incompatible shapes complex matrices ", "[mul]") {
