@@ -111,11 +111,11 @@ template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::transpose() {
   return *this;
 }
 template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::conjugate() {
-  // TODO: use copy instead of reference in rage forloop, evaluate performace
   if constexpr (std::is_same_v<T_SCALAR, RealScalar>)
     return *this;
+
   if constexpr (std::is_same_v<T_SCALAR, ComplexScalar>)
-    for (auto &c : this->m_data) {
+    for (auto c : this->m_data) {
       c = std::conj(c);
     }
   return *this;
