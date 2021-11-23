@@ -1,5 +1,4 @@
-#include "sclMatrix/sclComplexMatrix.hpp"
-#include "sclMatrix/sclRealMatrix.hpp"
+#include "sclMatrix/sclMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 SCENARIO("trace of square matrix", "[trace]") {

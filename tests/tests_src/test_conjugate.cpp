@@ -1,4 +1,4 @@
-#include "sclMatrix/sclComplexMatrix.hpp"
+#include "sclMatrix/sclMatrix.hpp"
 #include <catch2/catch_test_macros.hpp>
 
 SCENARIO("conjugate of matrix", "[conjugate]") {
