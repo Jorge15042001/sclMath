@@ -62,7 +62,7 @@ SCENARIO("conjugate of matrix", "[conjugate]") {
   GIVEN("A real matrix of shape (3,4)") {
     sclMath::RealMatrix m(3, 3);
     m.set(0, 0, 1);
-    m.set(1, 3, 2);
+    m.set(1, 0, 2);
     m.set(2, 1, 3.1);
     m.set(2, 0, 4);
 
@@ -76,7 +76,7 @@ SCENARIO("conjugate of matrix", "[conjugate]") {
 
       THEN("the conjugated matrix is identical to the original ") {
         REQUIRE(m.get(0, 0) == 1);
-        REQUIRE(m.get(1, 3) == 2);
+        REQUIRE(m.get(1, 0) == 2);
         REQUIRE(m.get(2, 1) == 3.1);
         REQUIRE(m.get(2, 0) == 4);
 
