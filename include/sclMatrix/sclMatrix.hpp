@@ -169,7 +169,6 @@ template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isHermitian() const {
 }
 template <c_Scalar T_SCALAR>
 Matrix<T_SCALAR> &Matrix<T_SCALAR>::scale(const T_SCALAR c) {
-  // TODO: range for loop, read as copy not as reference
   for (T_SCALAR &s : this->m_data)
     s *= c;
   return *this;
