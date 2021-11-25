@@ -3,6 +3,7 @@
 #include "sclMathErrors.hpp"
 #include <cmath>
 #include <complex>
+#include <numeric>>
 #include <type_traits>
 #include <vector>
 
@@ -142,11 +143,16 @@ template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::dagger() {
 template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::normSquared() const {
   // TODO:replace with stl algorith?
   // TODO: use c++20 ranges
-  T_SCALAR reuslt = 0;
-  for (const T_SCALAR s : this->m_data)
-    // TODO: check if std::conj(float) may cause perfonmance issues
-    reuslt += s * s;
-  return reuslt;
+  auto SquareAndSum = [](RealScalar s1, T_SCALAR s2) {
+    if constexpr (std::is_same_v<T_SCALAR, RealScalar>)
+      return s1 += s2 * s2;
+    if constexpr (std::is_same_v<T_SCALAR, ComplexScalar>)
+      // equivalent to s1 += (std:conj(s2)*s2).real()
+      return s1 += s2.real() * s2.real() + s2.imag() * s2.imag();
+  };
+
+  return projectToReal(std::accumulate(this->m_data.begin(), this->m_data.end(),
+                                       0.0, SquareAndSum));
 }
 template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::norm() const {
   return std::sqrt(this->normSquared());
