@@ -167,7 +167,6 @@ template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isHermitian() const {
   }
   return true;
 }
-// TODO: no everload for sclMath::Scalar and sclMath::ComplexScalar
 template <c_Scalar T_SCALAR>
 Matrix<T_SCALAR> &Matrix<T_SCALAR>::scale(const T_SCALAR c) {
   // TODO: range for loop, read as copy not as reference
