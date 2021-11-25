@@ -115,7 +115,7 @@ template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::conjugate() {
     return *this;
 
   if constexpr (std::is_same_v<T_SCALAR, ComplexScalar>)
-    for (auto c : this->m_data) {
+    for (auto &c : this->m_data) {
       c = std::conj(c);
     }
   return *this;
@@ -138,7 +138,7 @@ template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::dagger() {
   return *this;
 }
 
-// TODO: test this function
+// TODO: test this function, probably wont work for complex numbers
 template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::normSquared() const {
   // TODO:replace with stl algorith?
   // TODO: use c++20 ranges
