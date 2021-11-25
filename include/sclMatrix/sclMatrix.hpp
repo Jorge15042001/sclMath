@@ -139,10 +139,7 @@ template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::dagger() {
   return *this;
 }
 
-// TODO: test this function, probably wont work for complex numbers
 template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::normSquared() const {
-  // TODO:replace with stl algorith?
-  // TODO: use c++20 ranges
   auto SquareAndSum = [](RealScalar s1, T_SCALAR s2) {
     if constexpr (std::is_same_v<T_SCALAR, RealScalar>)
       return s1 += s2 * s2;
