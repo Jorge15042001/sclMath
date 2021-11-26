@@ -179,10 +179,9 @@ template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isHermitian() const {
   // A[j,k]=conjugate(A[k,j]
   for (std::size_t i = 0; i < this->m_data.size(); i++) {
     // find position in matrix
-    const std::size_t j = i / this->cols;
-    const std::size_t k = i % this->cols;
+    const std::size_t j = (i % this->rows) * this->rows + i / this->rows;
     // check hermitian condition
-    if (this->get(j, k) != std::conj(this->get(k, j)))
+    if (this->m_data[i] != std::conj(this->m_data[j]))
       return false;
   }
   return true;
