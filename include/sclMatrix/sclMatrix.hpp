@@ -38,6 +38,7 @@ public:
   RealScalar norm() const;
 
   // TODO: isSymmetric missing
+  bool isSymmetric() const;
   bool isHermitian() const;
 
   Matrix<T_SCALAR> &scale(const T_SCALAR s);
@@ -157,6 +158,20 @@ template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::norm() const {
   return std::sqrt(this->normSquared());
 }
 
+template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isSymmetric() const {
+  // if is not square matrix return false;
+  if (this->rows != this->cols)
+    return false;
+  // A[j,k]=A[k,j]
+  for (std::size_t i = 0; i < this->m_data.size(); i++) {
+    // find position in matrix
+    const std::size_t j = (i % this->rows) * this->rows + i / this->rows;
+    // check symmetry condition
+    if (this->m_data[i] != this->m_data[j])
+      return false;
+  }
+  return true;
+}
 template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isHermitian() const {
   // if is not square matrix return false;
   if (this->rows != this->cols)
