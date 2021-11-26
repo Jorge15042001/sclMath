@@ -172,6 +172,10 @@ template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isSymmetric() const {
   return true;
 }
 template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isHermitian() const {
+  if constexpr (std::is_same_v<T_SCALAR,
+                               RealScalar>) // every symmetric real matrix is
+                                            // also hermitian
+    return this->isSymmetric();
   // if is not square matrix return false;
   if (this->rows != this->cols)
     return false;
