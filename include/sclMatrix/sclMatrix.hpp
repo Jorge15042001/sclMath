@@ -37,7 +37,6 @@ public:
   RealScalar normSquared() const;
   RealScalar norm() const;
 
-  // TODO: isSymmetric missing
   bool isSymmetric() const;
   bool isHermitian() const;
 
