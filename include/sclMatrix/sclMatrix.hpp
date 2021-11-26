@@ -95,6 +95,8 @@ template <c_Scalar T_SCALAR> std::size_t Matrix<T_SCALAR>::getCols() const {
   return this->cols;
 }
 
+// TODO: implement no copy transpose function
+// https://www.geeksforgeeks.org/inplace-m-x-n-size-matrix-transpose/
 template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::transpose() {
   // AT[i,] = A[j,i]
   std::vector<T_SCALAR> new_m_data(this->m_data.size());
