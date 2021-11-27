@@ -21,3 +21,9 @@ sclMath::c_Matrix auto operator*(const T_SCALAR1 s,
     return sclMath::copyMatrix<sclMath::RealMatrix, sclMath::ComplexMatrix>(m)
         .scale(s);
 }
+template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2>
+
+sclMath::c_Matrix auto operator*(const sclMath::Matrix<T_SCALAR2> &m,
+                                 const T_SCALAR1 s) {
+  return s * m;
+}
