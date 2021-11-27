@@ -4,8 +4,6 @@
 #include "sclMatrix.hpp"
 // == operator for matrices
 
-// TODO: almost equal neeeds to be tested with complex numbers
-
 // overloading operator == for ComplexMatrix
 // overloading operator == for realmatrices
 // overloading operator == for sclMath::RealMatrix and sclMath::ComplexMatrix
