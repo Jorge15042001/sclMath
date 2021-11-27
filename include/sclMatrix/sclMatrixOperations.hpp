@@ -1,13 +1,13 @@
 #pragma once
 
-#include "sclAngle.hpp" //TODO: remove
-#include "sclCopyMatrix.hpp"   //TODO: remove
-#include "sclDistance.hpp"     //TODO remove
-#include "sclInnerProduct.hpp" //TODO: remove
+#include "sclAngle.hpp"
+#include "sclCopyMatrix.hpp"
+#include "sclDistance.hpp"
+#include "sclInnerProduct.hpp"
 #include "sclMathErrors.hpp"
 #include "sclMathUtility.hpp"
-#include "sclMatrixAddition.hpp"       //TODO: remove
-#include "sclMatrixComparison.hpp"     //TODO: remove
-#include "sclMatrixMultiplication.hpp" //TODO: remove
-#include "sclMatrixScaling.hpp"        //TODO: remove
-#include "sclMatrixSubtraction.hpp"    //TODO: remove
+#include "sclMatrixAddition.hpp"
+#include "sclMatrixComparison.hpp"
+#include "sclMatrixMultiplication.hpp"
+#include "sclMatrixScaling.hpp"
+#include "sclMatrixSubtraction.hpp"
