@@ -18,10 +18,6 @@ sclMath::c_Matrix auto operator*(const T_SCALAR1 s,
   if constexpr (copyDoesNotChangeType)
     return sclMath::copyMatrix(m).scale(s);
   else
-    return sclMath::copyMatrix_asComplex(m).scale(s);
-}
-int main() {
-  sclMath::RealMatrix m(1, 1);
-  sclMath::ComplexScalar s(1);
-  sclMath::ComplexMatrix result = s * m;
+    return sclMath::copyMatrix<sclMath::RealMatrix, sclMath::ComplexMatrix>(m)
+        .scale(s);
 }
