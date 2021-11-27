@@ -89,8 +89,8 @@ TEST_CASE("isSymmetric operation for complex matrix", "[isHermitian]") {
   unsymmetric2.set(1, 0, sclMath::ComplexScalar(-6, 5));
   unsymmetric2.set(1, 1, sclMath::ComplexScalar(-3));
 
-  REQUIRE_FALSE(symmetric1.isSymmetric());
-  REQUIRE_FALSE(symmetric2.isSymmetric());
+  REQUIRE_FALSE(unsymmetric1.isSymmetric());
+  REQUIRE_FALSE(unsymmetric2.isSymmetric());
 }
 TEST_CASE("isSymmetric operation for real matrix", "[isHermitian]") {
   //  mathematically for real matrices, isHermitian is equivalent to isSymmetric
