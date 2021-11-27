@@ -97,29 +97,30 @@ template <c_Scalar T_SCALAR> std::size_t Matrix<T_SCALAR>::getCols() const {
 
 template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::transpose() {
   const std::size_t size = this->m_data.size() - 1;
-  T_SCALAR prevValue;
-  std::size_t nextPosition; // location of 't' to be moved
-  std::size_t cycleBegin;   // holds start of cycle
-  std::size_t i;            // iterator
-  // hash to mark moved elements
-  std::vector<bool> b(this->m_data.size(), false);
-  // Note that A[0] and A[size-1] won't move
-  b[0] = b[size] = true;
-  i = 1;
+  // at the begining no elements have been swap
+  std::vector<bool> swapLookUP(size + 1, false);
+  // the last and first element are never moved
+  swapLookUP[0] = swapLookUP[size] = true;
 
-  while (i < size) {
-    cycleBegin = i;
-    prevValue = this->m_data[i];
+  // i walks trough each position of the loop that must be swap
+  std::size_t i = 1; // iterator
+
+  while (i < size) { // if i greater size all elementes hav been swap
+
+    const std::size_t cycleBegin = i; // holds start of cycle
+    T_SCALAR prevValue = this->m_data[i];
+
     do {
-      nextPosition = (i * this->rows) % size;
-      std::swap(this->m_data[nextPosition], prevValue);
-      b[i] = true;
-      i = nextPosition;
-    } while (i != cycleBegin);
+      // new position for the prev element in the lopp
+      i = (i * this->rows) % size;
+      std::swap(this->m_data[i], prevValue);
+      // set the position as swap
+      swapLookUP[i] = true;
+    } while (i != cycleBegin); // while the end of the loop hasnt been reach
 
-    // Get Next Move (what about querying random location?)
-    for (i = 1; i < size && b[i]; i++)
-      ;
+    // Get Next Move
+    for (i = 1; i < size && swapLookUP[i]; i++)
+      ; // if i is set to size that means all elements have been swap
   }
   std::swap(this->rows, this->cols);
   return *this;
