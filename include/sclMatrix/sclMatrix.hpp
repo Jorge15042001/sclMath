@@ -46,6 +46,8 @@ public:
   std::size_t getCols() const;
 
   void set(const std::size_t i, const std::size_t j, const T_SCALAR s);
+  // TODO
+  const std::vector<T_SCALAR> getDataVector();
 
   T_SCALAR get(const std::int64_t i, const std::int64_t j) const;
 };
@@ -208,6 +210,10 @@ Matrix<T_SCALAR> &Matrix<T_SCALAR>::scale(const T_SCALAR c) {
   return *this;
 }
 
+template <c_Scalar T_SCALAR>
+const std::vector<T_SCALAR> Matrix<T_SCALAR>::getDataVector() {
+  return this->m_data;
+}
 template <c_Scalar T_SCALAR>
 T_SCALAR Matrix<T_SCALAR>::get(const std::int64_t i,
                                const std::int64_t j) const {
