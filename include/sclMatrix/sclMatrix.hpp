@@ -46,7 +46,6 @@ public:
   std::size_t getCols() const;
 
   void set(const std::size_t i, const std::size_t j, const T_SCALAR s);
-  // TODO
   const std::vector<T_SCALAR> getDataVector();
 
   T_SCALAR get(const std::int64_t i, const std::int64_t j) const;
