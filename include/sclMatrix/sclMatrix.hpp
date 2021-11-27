@@ -3,7 +3,8 @@
 #include "sclMathErrors.hpp"
 #include <cmath>
 #include <complex>
-#include <type_traits> //TODO:remove
+#include <numeric>>
+#include <type_traits>
 #include <vector>
 
 namespace sclMath {
@@ -36,7 +37,7 @@ public:
   RealScalar normSquared() const;
   RealScalar norm() const;
 
-  // TODO: is transpose methood missing
+  bool isSymmetric() const;
   bool isHermitian() const;
 
   Matrix<T_SCALAR> &scale(const T_SCALAR s);
@@ -95,25 +96,39 @@ template <c_Scalar T_SCALAR> std::size_t Matrix<T_SCALAR>::getCols() const {
 }
 
 template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::transpose() {
-  // AT[i,] = A[j,i]
-  std::vector<T_SCALAR> new_m_data(this->m_data.size());
+  const std::size_t size = this->m_data.size() - 1;
+  // at the begining no elements have been swap
+  std::vector<bool> swapLookUP(size + 1, false);
+  // the last and first element are never moved
+  swapLookUP[0] = swapLookUP[size] = true;
 
-  auto f_finalPosition = [this](const std::size_t x) {
-    return (x % this->cols) * this->rows + x / this->cols;
-  };
+  // i walks trough each position of the loop that must be swap
+  std::size_t i = 1; // iterator
 
-  for (std::size_t i = 0; i < this->m_data.size(); i++) {
-    new_m_data[f_finalPosition(i)] = this->m_data[i];
+  while (i < size) { // if i greater size all elementes hav been swap
+
+    const std::size_t cycleBegin = i; // holds start of cycle
+    T_SCALAR prevValue = this->m_data[i];
+
+    do {
+      // new position for the prev element in the lopp
+      i = (i * this->rows) % size;
+      std::swap(this->m_data[i], prevValue);
+      // set the position as swap
+      swapLookUP[i] = true;
+    } while (i != cycleBegin); // while the end of the loop hasnt been reach
+
+    // Get Next Move
+    for (i = 1; i < size && swapLookUP[i]; i++)
+      ; // if i is set to size that means all elements have been swap
   }
-  this->m_data = new_m_data;
-
-  std::swap(this->cols, this->rows);
+  std::swap(this->rows, this->cols);
   return *this;
 }
 template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::conjugate() {
-  // TODO: use copy instead of reference in rage forloop, evaluate performace
   if constexpr (std::is_same_v<T_SCALAR, RealScalar>)
     return *this;
+
   if constexpr (std::is_same_v<T_SCALAR, ComplexScalar>)
     for (auto &c : this->m_data) {
       c = std::conj(c);
@@ -138,39 +153,56 @@ template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::dagger() {
   return *this;
 }
 
-// TODO: test this function
 template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::normSquared() const {
-  // TODO:replace with stl algorith?
-  // TODO: use c++20 ranges
-  T_SCALAR reuslt = 0;
-  for (const T_SCALAR s : this->m_data)
-    // TODO: check if std::conj(float) may cause perfonmance issues
-    reuslt += s * s;
-  return reuslt;
+  auto SquareAndSum = [](RealScalar s1, T_SCALAR s2) {
+    if constexpr (std::is_same_v<T_SCALAR, RealScalar>)
+      return s1 += s2 * s2;
+    if constexpr (std::is_same_v<T_SCALAR, ComplexScalar>)
+      // equivalent to s1 += (std:conj(s2)*s2).real()
+      return s1 += s2.real() * s2.real() + s2.imag() * s2.imag();
+  };
+
+  return projectToReal(std::accumulate(this->m_data.begin(), this->m_data.end(),
+                                       0.0, SquareAndSum));
 }
 template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::norm() const {
   return std::sqrt(this->normSquared());
 }
 
+template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isSymmetric() const {
+  // if is not square matrix return false;
+  if (this->rows != this->cols)
+    return false;
+  // A[j,k]=A[k,j]
+  for (std::size_t i = 0; i < this->m_data.size(); i++) {
+    // find position in matrix
+    const std::size_t j = (i % this->rows) * this->rows + i / this->rows;
+    // check symmetry condition
+    if (this->m_data[i] != this->m_data[j])
+      return false;
+  }
+  return true;
+}
 template <c_Scalar T_SCALAR> bool Matrix<T_SCALAR>::isHermitian() const {
+  if constexpr (std::is_same_v<T_SCALAR,
+                               RealScalar>) // every symmetric real matrix is
+                                            // also hermitian
+    return this->isSymmetric();
   // if is not square matrix return false;
   if (this->rows != this->cols)
     return false;
   // A[j,k]=conjugate(A[k,j]
   for (std::size_t i = 0; i < this->m_data.size(); i++) {
     // find position in matrix
-    const std::size_t j = i / this->cols;
-    const std::size_t k = i % this->cols;
+    const std::size_t j = (i % this->rows) * this->rows + i / this->rows;
     // check hermitian condition
-    if (this->get(j, k) != std::conj(this->get(k, j)))
+    if (this->m_data[i] != std::conj(this->m_data[j]))
       return false;
   }
   return true;
 }
-// TODO: no everload for sclMath::Scalar and sclMath::ComplexScalar
 template <c_Scalar T_SCALAR>
 Matrix<T_SCALAR> &Matrix<T_SCALAR>::scale(const T_SCALAR c) {
-  // TODO: range for loop, read as copy not as reference
   for (T_SCALAR &s : this->m_data)
     s *= c;
   return *this;

@@ -1,3 +1,4 @@
+#pragma once
 #include "sclMathErrors.hpp"
 #include "sclMatrix.hpp"
 
