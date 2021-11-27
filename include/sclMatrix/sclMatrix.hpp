@@ -98,19 +98,32 @@ template <c_Scalar T_SCALAR> std::size_t Matrix<T_SCALAR>::getCols() const {
 // TODO: implement no copy transpose function
 // https://www.geeksforgeeks.org/inplace-m-x-n-size-matrix-transpose/
 template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::transpose() {
-  // AT[i,] = A[j,i]
-  std::vector<T_SCALAR> new_m_data(this->m_data.size());
+  const std::size_t size = this->m_data.size() - 1;
+  T_SCALAR prevValue;
+  std::size_t nextPosition; // location of 't' to be moved
+  std::size_t cycleBegin;   // holds start of cycle
+  std::size_t i;            // iterator
+  // hash to mark moved elements
+  std::vector<bool> b(this->m_data.size(), false);
+  // Note that A[0] and A[size-1] won't move
+  b[0] = b[size] = true;
+  i = 1;
 
-  auto f_finalPosition = [this](const std::size_t x) {
-    return (x % this->cols) * this->rows + x / this->cols;
-  };
+  while (i < size) {
+    cycleBegin = i;
+    prevValue = this->m_data[i];
+    do {
+      nextPosition = (i * this->rows) % size;
+      std::swap(this->m_data[nextPosition], prevValue);
+      b[i] = true;
+      i = nextPosition;
+    } while (i != cycleBegin);
 
-  for (std::size_t i = 0; i < this->m_data.size(); i++) {
-    new_m_data[f_finalPosition(i)] = this->m_data[i];
+    // Get Next Move (what about querying random location?)
+    for (i = 1; i < size && b[i]; i++)
+      ;
   }
-  this->m_data = new_m_data;
-
-  std::swap(this->cols, this->rows);
+  std::swap(this->rows, this->cols);
   return *this;
 }
 template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::conjugate() {
