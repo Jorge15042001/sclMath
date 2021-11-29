@@ -1,6 +1,7 @@
 #pragma once
 
 #include "sclMathErrors.hpp"
+#include <algorithm>>
 #include <cmath>
 #include <complex>
 #include <numeric>>
