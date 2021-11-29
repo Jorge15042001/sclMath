@@ -13,7 +13,7 @@ RealScalar angle(const c_Matrix auto &m1, const c_Matrix auto &m2) {
   const RealScalar m1Norm = m1.norm();
   const RealScalar m2Norm = m2.norm();
 
-  const c_Scalar auto innerP = projectToReal(innerProduct(m1, m2));
+  const RealScalar innerP = projectToReal(innerProduct(m1, m2));
   return std::acos(innerP / (m1Norm * m2Norm));
 }
 } // namespace sclMath
