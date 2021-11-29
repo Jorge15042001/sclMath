@@ -145,9 +145,9 @@ template <c_Scalar T_SCALAR> Matrix<T_SCALAR> &Matrix<T_SCALAR>::conjugate() {
     return *this;
 
   if constexpr (std::is_same_v<T_SCALAR, ComplexScalar>)
-    for (auto &c : this->m_data) {
-      c = std::conj(c);
-    }
+    std::transform(this->m_data.begin(), this->m_data.end(),
+                   this->m_data.begin(),
+                   [](ComplexScalar s) { return std::conj(s); });
   return *this;
 }
 
