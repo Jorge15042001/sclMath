@@ -28,6 +28,8 @@ private:
 
 public:
   Matrix(const std::int64_t rows, const std::int64_t cols);
+  Matrix(const std::int64_t rows, const std::int64_t cols,
+         std::vector<T_SCALAR> &&data);
 
   Matrix<T_SCALAR> &transpose();
   Matrix<T_SCALAR> &conjugate();
@@ -86,6 +88,18 @@ Matrix<T_SCALAR>::Matrix(const std::int64_t rows, const std::int64_t cols)
                         " number of rows can not be negative or zero");
   sclMathError::ASSERT2(cols > 0,
                         " number of columns can not be negative or zero");
+}
+template <c_Scalar T_SCALAR>
+Matrix<T_SCALAR>::Matrix(const std::int64_t rows, const std::int64_t cols,
+                         std::vector<T_SCALAR> &&data)
+    : rows(rows), cols(cols), m_data(std::move(data)) {
+  sclMathError::ASSERT2(rows > 0,
+                        " number of rows can not be negative or zero");
+  sclMathError::ASSERT2(cols > 0,
+                        " number of columns can not be negative or zero");
+  sclMathError::ASSERT2(
+      rows * cols == this->m_data.size(),
+      " number of elementes is array musy be equal (rows*columns)");
 }
 
 template <c_Scalar T_SCALAR> std::size_t Matrix<T_SCALAR>::getRows() const {
