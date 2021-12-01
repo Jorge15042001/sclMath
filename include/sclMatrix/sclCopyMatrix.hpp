@@ -7,12 +7,6 @@ namespace sclMath {
 // copy matrix for sclMath::ComplexMatrix, sclMath::ComplexMatrix
 // copy matrix for sclMath::RealMatrix, sclMath::RealMatrix
 
-template <sclMath::c_Matrix MT> struct ScalarTypeOfMatrix {
-  using type = sclMath::ComplexScalar;
-};
-template <> struct ScalarTypeOfMatrix<RealMatrix> {
-  using type = sclMath::RealScalar;
-};
 template <c_Matrix T_MATRIX, c_Matrix T_OUTPUT = T_MATRIX>
 T_OUTPUT copyMatrix(const T_MATRIX &m) {
 

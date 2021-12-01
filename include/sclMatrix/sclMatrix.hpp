@@ -76,6 +76,13 @@ template <c_Scalar ST1, c_Scalar ST2> struct resultTypeSclar {
 template <> struct resultTypeSclar<RealScalar, RealScalar> {
   using type = RealScalar;
 };
+// tempalte to get the scalar type of a matrix type
+template <sclMath::c_Matrix MT> struct ScalarTypeOfMatrix {
+  using type = sclMath::ComplexScalar;
+};
+template <> struct ScalarTypeOfMatrix<RealMatrix> {
+  using type = sclMath::RealScalar;
+};
 
 } // namespace sclMath
 
