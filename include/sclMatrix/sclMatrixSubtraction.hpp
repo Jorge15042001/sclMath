@@ -9,10 +9,12 @@
 // overloading operator - for sclMath::RealMatrix, sclMath::ComplexMatrix
 // overloading operator - for sclMath::ComplexMatrix, sclMath::RealMatrix
 
-template <sclMath::c_Matrix T_MATRIX1, sclMath::c_Matrix T_MATRIX2>
-sclMath::c_Matrix auto operator-(const T_MATRIX1 &m1, const T_MATRIX2 &m2) {
+template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2>
+sclMath::c_Matrix auto operator-(const sclMath::Matrix<T_SCALAR1> &m1,
+                                 const sclMath::Matrix<T_SCALAR2> &m2) {
 
-  typedef typename sclMath::resultType<T_MATRIX1, T_MATRIX2>::type ResultType;
+  typedef
+      typename sclMath::resultTypeSclar<T_SCALAR1, T_SCALAR2>::type OUTSCALAR_T;
 
   sclMathError::ASSERT2(
       m1.getRows() == m2.getRows(),
@@ -24,13 +26,13 @@ sclMath::c_Matrix auto operator-(const T_MATRIX1 &m1, const T_MATRIX2 &m2) {
   const std::size_t cols = m1.getCols();
   const std::size_t rows = m1.getRows();
 
-  ResultType result(rows, cols);
+  const std::vector<T_SCALAR1> &m1_data = m1.getDataVector();
+  const std::vector<T_SCALAR2> &m2_data = m2.getDataVector();
 
-  for (std::size_t i = 0; i < rows; i++) {
-    for (std::size_t j = 0; j < cols; j++) {
-      const sclMath::c_Scalar auto sum = m1.get(i, j) - m2.get(i, j);
-      result.set(i, j, sum);
-    }
-  }
-  return result;
+  std::vector<OUTSCALAR_T> result_data(rows * cols);
+
+  std::transform(m1_data.begin(), m1_data.end(), m2_data.begin(),
+                 result_data.begin(), std::minus<>());
+
+  return sclMath::Matrix<OUTSCALAR_T>(rows, cols, std::move(result_data));
 }
