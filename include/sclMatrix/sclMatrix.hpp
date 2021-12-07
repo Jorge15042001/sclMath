@@ -12,11 +12,6 @@ namespace sclMath {
 typedef std::complex<double> ComplexScalar;
 typedef double RealScalar;
 
-inline RealScalar projectToReal(RealScalar s) { return s; }
-inline RealScalar projectToReal(ComplexScalar s) { return s.real(); }
-inline ComplexScalar projectToComplex(RealScalar s) { return s; }
-inline ComplexScalar projectToComplex(ComplexScalar s) { return s; }
-
 template <typename T>
 concept c_Scalar =
     std::is_same_v<T, RealScalar> || std::is_same_v<T, ComplexScalar>;
@@ -185,8 +180,8 @@ template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::normSquared() const {
       return s1 += s2.real() * s2.real() + s2.imag() * s2.imag();
   };
 
-  return projectToReal(std::accumulate(this->m_data.begin(), this->m_data.end(),
-                                       0.0, SquareAndSum));
+  return std::real(std::accumulate(this->m_data.begin(), this->m_data.end(),
+                                   0.0, SquareAndSum));
 }
 template <c_Scalar T_SCALAR> RealScalar Matrix<T_SCALAR>::norm() const {
   return std::sqrt(this->normSquared());
