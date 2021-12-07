@@ -4,8 +4,11 @@
 
 namespace sclMath {
 
-// copy matrix for sclMath::ComplexMatrix, sclMath::ComplexMatrix
-// copy matrix for sclMath::RealMatrix, sclMath::RealMatrix
+// copy matrix from sclMath::ComplexMatrix, sclMath::ComplexMatrix
+// copy matrix from sclMath::RealMatrix, sclMath::RealMatrix
+// copy matrix from sclMath::RealMatrix, sclMath::ComplexMatrix
+
+// INVALID copy matrix from sclMath::ComplexMatrix, sclMath::RealMatrix
 
 template <c_Matrix T_MATRIX, c_Matrix T_OUTPUT = T_MATRIX>
 T_OUTPUT copyMatrix(const T_MATRIX &m) {
