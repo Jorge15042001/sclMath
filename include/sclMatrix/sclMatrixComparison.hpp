@@ -19,11 +19,8 @@ bool operator==(const sclMath::Matrix<TS1> &m1,
   if (m1.getCols() != m2.getCols())
     return false;
 
-  const std::vector<TS1> &m1_data = m1.getDataVector();
-  const std::vector<TS2> &m2_data = m2.getDataVector();
-
-  return std::equal(m1_data.begin(), m1_data.end(), m2_data.begin(),
-                    [](const TS1 s1, const TS2 s2) {
+  return std::equal(m1.getDataVector().begin(), m1.getDataVector().end(),
+                    m2.getDataVector().begin(), [](const TS1 s1, const TS2 s2) {
                       return sclMathUtility::areaAlmostEqual(s1, s2);
                     });
 }
