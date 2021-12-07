@@ -15,8 +15,7 @@ template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2>
 sclMath::c_Matrix auto operator+(const sclMath::Matrix<T_SCALAR1> &m1,
                                  const sclMath::Matrix<T_SCALAR2> &m2) {
 
-  typedef
-      typename sclMath::resultTypeSclar<T_SCALAR1, T_SCALAR2>::type OUTSCALAR_T;
+  typedef typename sclMath::resultTypeSclar<T_SCALAR1, T_SCALAR2>::type T_OUT;
 
   sclMathError::ASSERT2(
       m1.getRows() == m2.getRows(),
@@ -28,11 +27,11 @@ sclMath::c_Matrix auto operator+(const sclMath::Matrix<T_SCALAR1> &m1,
   const std::size_t rows = m1.getRows();
   const std::size_t cols = m1.getCols();
 
-  std::vector<OUTSCALAR_T> result_data(rows * cols);
+  std::vector<T_OUT> result_data(rows * cols);
 
   std::transform(m1.getDataVector().begin(), m1.getDataVector().end(),
                  m2.getDataVector().begin(), result_data.begin(),
                  std::plus<>());
 
-  return sclMath::Matrix<OUTSCALAR_T>(rows, cols, std::move(result_data));
+  return sclMath::Matrix<T_OUT>(rows, cols, std::move(result_data));
 }
