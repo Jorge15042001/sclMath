@@ -26,13 +26,11 @@ sclMath::c_Matrix auto operator-(const sclMath::Matrix<T_SCALAR1> &m1,
   const std::size_t cols = m1.getCols();
   const std::size_t rows = m1.getRows();
 
-  const std::vector<T_SCALAR1> &m1_data = m1.getDataVector();
-  const std::vector<T_SCALAR2> &m2_data = m2.getDataVector();
-
   std::vector<OUTSCALAR_T> result_data(rows * cols);
 
-  std::transform(m1_data.begin(), m1_data.end(), m2_data.begin(),
-                 result_data.begin(), std::minus<>());
+  std::transform(m1.getDataVector().begin(), m1.getDataVector().end(),
+                 m2.getDataVector().begin(), result_data.begin(),
+                 std::minus<>());
 
   return sclMath::Matrix<OUTSCALAR_T>(rows, cols, std::move(result_data));
 }
