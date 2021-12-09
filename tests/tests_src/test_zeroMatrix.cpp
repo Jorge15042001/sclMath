@@ -1,17 +1,53 @@
 #include "sclMatrix/sclMatrix.hpp"
+#include "sclMatrix/sclZeroMatrix.hpp"
+
 #include <catch2/catch_test_macros.hpp>
+
 TEST_CASE("zero matrix creation", "[zero matrix]") {
   // constructor
-  /* sclMath::ZeroMatrix<RealMatrix> zero(1, 4); */
-  /* sclMath::ZeroMatrix<ComplexMatrix> zero(1, 4); */
-  // implicit conversion
-  /* sclMath::ComplexMatrix zeroComplex = sclMath::ZeroMatrix(1, 4); */
-  /* sclMath::RealMatrix zeroReal = sclMath::ZeroMatrix(1, 4); */
-  // explicit conversion
-  /* sclMath::RealMatrix zeroReal2(sclMath::ZeroMatrix(2, 2)); */
-  /* sclMath::ComplexMatrix zeroComplex2(sclMath::ZeroMatrix(2, 2)); */
+  sclMath::ZeroMatrix zero(3, 4);
 
-  // casting no implement
-  /* sclMath::RealMatrix a = (sclMath::RealMatrix) sclMath::Zero(1,1); */
-  /* sclMath::ComplexMatrix b = (sclMath::ComplexMatrix) sclMath::Zero(1,1); */
+  zero.transpose();
+  REQUIRE(zero.getRows() == 4);
+  REQUIRE(zero.getCols() == 3);
+  zero.transpose();
+  REQUIRE(zero.getRows() == 3);
+  REQUIRE(zero.getCols() == 4);
+
+  // implicit conversion
+  sclMath::ComplexMatrix zeroComplex = sclMath::ZeroMatrix(3, 4);
+  sclMath::RealMatrix zeroReal = sclMath::ZeroMatrix(3, 4);
+
+  REQUIRE(zeroComplex.get(0, 0) == 0.0);
+  REQUIRE(zeroComplex.get(0, 1) == 0.0);
+  REQUIRE(zeroComplex.get(0, 2) == 0.0);
+  REQUIRE(zeroComplex.get(0, 3) == 0.0);
+
+  REQUIRE(zeroComplex.get(1, 0) == 0.0);
+  REQUIRE(zeroComplex.get(1, 1) == 0.0);
+  REQUIRE(zeroComplex.get(1, 2) == 0.0);
+  REQUIRE(zeroComplex.get(1, 3) == 0.0);
+
+  REQUIRE(zeroComplex.get(2, 0) == 0.0);
+  REQUIRE(zeroComplex.get(2, 1) == 0.0);
+  REQUIRE(zeroComplex.get(2, 2) == 0.0);
+  REQUIRE(zeroComplex.get(2, 3) == 0.0);
+
+  REQUIRE(zeroReal.get(0, 0) == 0.0);
+  REQUIRE(zeroReal.get(0, 1) == 0.0);
+  REQUIRE(zeroReal.get(0, 2) == 0.0);
+  REQUIRE(zeroReal.get(0, 3) == 0.0);
+
+  REQUIRE(zeroReal.get(1, 0) == 0.0);
+  REQUIRE(zeroReal.get(1, 1) == 0.0);
+  REQUIRE(zeroReal.get(1, 2) == 0.0);
+  REQUIRE(zeroReal.get(1, 3) == 0.0);
+
+  REQUIRE(zeroReal.get(2, 0) == 0.0);
+  REQUIRE(zeroReal.get(2, 1) == 0.0);
+  REQUIRE(zeroReal.get(2, 2) == 0.0);
+  REQUIRE(zeroReal.get(2, 3) == 0.0);
+
+  CHECK_NOTHROW(sclMath::RealMatrix(sclMath::ZeroMatrix(2, 2)));
+  CHECK_NOTHROW(sclMath::ComplexMatrix(sclMath::ZeroMatrix(2, 2)));
 }
