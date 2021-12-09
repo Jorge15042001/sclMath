@@ -2,6 +2,7 @@
 
 #include "sclMathErrors.hpp"
 #include "sclTypeTraits.hpp"
+#include "sclZeroMatrix.hpp"
 #include <algorithm>>
 #include <cmath>
 #include <complex>
@@ -21,7 +22,7 @@ public:
   Matrix(const std::int64_t rows, const std::int64_t cols);
   Matrix(const std::int64_t rows, const std::int64_t cols,
          std::vector<T_SCALAR> &&data);
-
+  Matrix(const ZeroMatrix &m_zero);
   Matrix<T_SCALAR> &transpose();
   Matrix<T_SCALAR> &conjugate();
   Matrix<T_SCALAR> &dagger();
@@ -72,6 +73,10 @@ Matrix<T_SCALAR>::Matrix(const std::int64_t rows, const std::int64_t cols,
       " number of elementes is array musy be equal (rows*columns)");
 }
 
+template <c_Scalar T_SCALAR>
+Matrix<T_SCALAR>::Matrix(const ZeroMatrix &mZero)
+    : rows(mZero.getRows()), cols(mZero.getCols()),
+      m_data(mZero.getRows() * mZero.getCols()) {}
 template <c_Scalar T_SCALAR> std::size_t Matrix<T_SCALAR>::getRows() const {
   return this->rows;
 }
