@@ -220,7 +220,36 @@ SCENARIO("matrix multiplication with ZeroMatrix", "[sclMatrixMultiplication]") {
   GIVEN("A real matrix ") {
     sclMath::RealMatrix m(4, 4,
                           {1, 3, 5, 1, 7, 2, 6, 5, 1, 3, 5, 1, 7, 2, 6, 5});
-    /* sclMath::RealMatrix result = m * sclMath::ZeroMatrix(4, 4); */
+
+    sclMath::ZeroMatrix mZero(4, 4);
+    sclMath::ZeroMatrix mZeroNoCompatible(3, 3);
+
+    CHECK_NOTHROW(m * mZero);
+    CHECK_NOTHROW(mZero * m);
+
+    CHECK_NOTHROW((sclMath::ComplexMatrix)(m * mZero));
+    CHECK_NOTHROW(sclMath::RealMatrix(mZero * m));
+
+    CHECK_THROWS(m * mZeroNoCompatible);
+    CHECK_THROWS(mZeroNoCompatible * m);
+
+    CHECK_THROWS((sclMath::ComplexMatrix)(m * mZeroNoCompatible));
+    CHECK_THROWS(sclMath::RealMatrix(mZeroNoCompatible * m));
+
+    sclMath::ComplexMatrix mComplex(
+        4, 4, {1, 3, {5, 1}, 1, {7, -1}, 2, 6, 5, 1, 3, 5, 1, 7, 2, 6, 5});
+
+    CHECK_NOTHROW(mComplex * mZero);
+    CHECK_NOTHROW(mZero * mComplex);
+
+    CHECK_NOTHROW((sclMath::ComplexMatrix)(mComplex * mZero));
+    CHECK_NOTHROW(sclMath::RealMatrix(mZero * mComplex));
+
+    CHECK_THROWS(mComplex * mZeroNoCompatible);
+    CHECK_THROWS(mZeroNoCompatible * mComplex);
+
+    CHECK_THROWS((sclMath::ComplexMatrix)(mComplex * mZeroNoCompatible));
+    CHECK_THROWS(sclMath::RealMatrix(mZeroNoCompatible * mComplex));
   }
   GIVEN("A complex matrix ") {}
 }
