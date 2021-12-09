@@ -137,3 +137,29 @@ TEST_CASE("innerProduct operation on real vector and ComplexVector",
   REQUIRE(result1 == sclMath::ComplexScalar{3, 4});
   REQUIRE(result2 == sclMath::ComplexScalar{3, -4});
 }
+
+TEST_CASE("innerProduct with a zeroMatrix", "[innerProduct]") {
+
+  sclMath::ZeroMatrix zero(3, 4);
+
+  sclMath::RealMatrix m1(3, 4);
+  sclMath::ComplexMatrix m2(3, 4);
+
+  m1.set(0, 0, 1);
+  m1.set(0, 2, 0);
+  m1.set(0, 3, 1);
+  m1.set(1, 0, 3);
+  m1.set(2, 0, 1);
+  m1.set(2, 3, 3);
+
+  m2.set(0, 1, 2);
+  m2.set(0, 2, {1, 0});
+  m2.set(0, 3, 3);
+  m2.set(1, 1, 1);
+  m2.set(2, 1, {1, 3});
+  m2.set(2, 2, 1);
+  m2.set(2, 2, {2, 2});
+
+  /* sclMath::RealScalar zeroReal1 = sclMath::innerProduct(m1, zero); */
+  /* sclMath::RealScalar zeroReal2 = sclMath::innerProduct(zero, m1); */
+}
