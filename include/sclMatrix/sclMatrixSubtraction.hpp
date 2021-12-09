@@ -13,7 +13,7 @@ template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2>
 sclMath::c_Matrix auto operator-(const sclMath::Matrix<T_SCALAR1> &m1,
                                  const sclMath::Matrix<T_SCALAR2> &m2) {
 
-  typedef typename sclMath::resultTypeSclar<T_SCALAR1, T_SCALAR2>::type T_OUT;
+  typedef typename sclMath::ScalarResultType<T_SCALAR1, T_SCALAR2>::type T_OUT;
 
   sclMathError::ASSERT2(
       m1.getRows() == m2.getRows(),

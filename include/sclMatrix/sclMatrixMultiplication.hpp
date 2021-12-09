@@ -9,12 +9,15 @@
 // overloading operator * for sclMath::RealMatrix, sclMath::ComplexMatrix
 // overloading operator * for sclMath::ComplexMatrix, sclMath::RealMatrix
 
-template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2>
-sclMath::c_Matrix auto operator*(const sclMath::Matrix<T_SCALAR1> &m1,
-                                 const sclMath::Matrix<T_SCALAR2> &m2) {
+/* template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2> */
+sclMath::c_Matrix auto operator*(const sclMath::c_Matrix auto &m1,
+                                 const sclMath::c_Matrix auto &m2) {
 
-  typedef
-      typename sclMath::resultTypeSclar<T_SCALAR1, T_SCALAR2>::type ResultType;
+  /* typedef typename sclMath::ScalarResultType<>::type ResultType; */
+  typedef typename sclMath::MatrixResultType<
+      std::remove_cvref_t<decltype(m1)>,
+      std::remove_cvref_t<decltype(m2)>>::type MatrixType;
+  typedef typename sclMath::MatrixScalarType<MatrixType>::type ScalarType;
 
   sclMathError::ASSERT2(
       m1.getCols() == m2.getRows(),
@@ -24,11 +27,11 @@ sclMath::c_Matrix auto operator*(const sclMath::Matrix<T_SCALAR1> &m1,
   const std::size_t rows = m1.getRows();
   const std::size_t cols = m2.getCols();
 
-  sclMath::Matrix<ResultType> result(rows, cols);
+  MatrixType result(rows, cols);
 
   for (std::size_t i = 0; i < rows; i++) {
     for (std::size_t j = 0; j < cols; j++) {
-      ResultType sum = 0;
+      ScalarType sum = 0.0;
       for (std::size_t h = 0; h < n; h++) {
         sum += m1.get(i, h) * m2.get(h, j);
       }

@@ -13,8 +13,8 @@ namespace sclMath {
 template <c_Matrix T_MATRIX, c_Matrix T_OUTPUT = T_MATRIX>
 T_OUTPUT copyMatrix(const T_MATRIX &m) {
 
-  typedef typename ScalarTypeOfMatrix<T_MATRIX>::type ScalarType_input;
-  typedef typename ScalarTypeOfMatrix<T_OUTPUT>::type ScalarType_output;
+  typedef typename MatrixScalarType<T_MATRIX>::type ScalarType_input;
+  typedef typename MatrixScalarType<T_OUTPUT>::type ScalarType_output;
 
   const std::vector<ScalarType_input> &data = m.getDataVector();
   std::vector<ScalarType_output> dataCopy;

@@ -2,6 +2,7 @@
 
 #include "sclInnerProduct.hpp"
 #include "sclMatrix.hpp"
+#include "sclZeroMatrix.hpp"
 
 namespace sclMath {
 // implementation

@@ -11,8 +11,9 @@
 template <sclMath::c_Scalar T_SCALAR, sclMath::c_Matrix T_MATRIX>
 sclMath::c_Matrix auto operator*(const T_SCALAR s, const T_MATRIX &m) {
 
-  typedef typename sclMath::ScalarTypeOfMatrix<T_MATRIX>::type MATRIX_ST;
-  typedef typename sclMath::resultTypeSclar<T_SCALAR, MATRIX_ST>::type T_OUTPUT;
+  typedef typename sclMath::MatrixScalarType<T_MATRIX>::type MATRIX_ST;
+  typedef
+      typename sclMath::ScalarResultType<T_SCALAR, MATRIX_ST>::type T_OUTPUT;
 
   return sclMath::copyMatrix<T_MATRIX, sclMath::Matrix<T_OUTPUT>>(m).scale(s);
 }
