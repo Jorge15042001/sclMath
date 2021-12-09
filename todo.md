@@ -15,7 +15,7 @@ Since we already have a functional simple back-end, we can implement the followi
 
 ## matrices
 - [x] matrices: **missing reshaping, adding cols and rows, and real type matrix**
-- [ ] zero matrix 
+- [x] zero matrix  **missing operations with zeroMatrix**
 - [ ] identity
 - [ ] scalar matrix, all entries have the same value
 - [ ] triangular matrix(top,bottom), **won't implement**
