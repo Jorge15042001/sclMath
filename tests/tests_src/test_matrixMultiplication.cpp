@@ -3,7 +3,7 @@
 
 #include <catch2/catch_test_macros.hpp>
 
-SCENARIO("matrix multiplication result", "[result]") {
+SCENARIO("matrix multiplication result", "[sclMatrixMultiplication]") {
 
   GIVEN("2  complex matrices of compatible sizes") {
     // TODO: write indentity matrix class;
@@ -215,4 +215,12 @@ SCENARIO("matrix multiplication result", "[result]") {
       }
     }
   }
+}
+SCENARIO("matrix multiplication with ZeroMatrix", "[sclMatrixMultiplication]") {
+  GIVEN("A real matrix ") {
+    sclMath::RealMatrix m(4, 4,
+                          {1, 3, 5, 1, 7, 2, 6, 5, 1, 3, 5, 1, 7, 2, 6, 5});
+    /* sclMath::RealMatrix result = m * sclMath::ZeroMatrix(4, 4); */
+  }
+  GIVEN("A complex matrix ") {}
 }
