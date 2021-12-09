@@ -21,28 +21,28 @@ class IdentityMatrix;
 
 // more useful concepts for generic programming
 
-/* template <typename T> */
-/* concept c_RealMatrix = std::is_same_v<T, RealMatrix> || */
-/*     std::is_same_v<T, ZeroMatrix> || std::is_same_v<T, IdentityMatrix>; */
-
-/* template <typename T> */
-/* concept c_ComplexMatrix = std::is_same_v<T, ComplexMatrix>; */
-
-/* template <typename T> */
-/* concept c_Matrix = c_RealMatrix<T> || c_ComplexMatrix<T>; */
+template <typename T>
+concept c_RealMatrix = std::is_same_v<T, RealMatrix> ||
+    std::is_same_v<T, ZeroMatrix> || std::is_same_v<T, IdentityMatrix>;
 
 template <typename T>
-concept c_Matrix = std::is_same_v<T, Matrix<RealScalar>> ||
+concept c_ComplexMatrix = std::is_same_v<T, ComplexMatrix>;
+
+template <typename T>
+concept c_AnyMatrix = c_RealMatrix<T> || c_ComplexMatrix<T>;
+
+template <typename T>
+concept c_FullMatrix = std::is_same_v<T, Matrix<RealScalar>> ||
     std::is_same_v<T, Matrix<ComplexScalar>> || std::is_same_v<T, ZeroMatrix>;
 
 // tempalte to get the scalar type of a matrix type
-template <sclMath::c_Matrix MT> struct MatrixScalarType {
+template <sclMath::c_FullMatrix MT> struct MatrixScalarType {
   using type = ComplexScalar;
 };
 template <> struct MatrixScalarType<RealMatrix> { using type = RealScalar; };
 
 // useful for return type deduction
-template <c_Matrix MT1, c_Matrix MT2> struct MatrixResultType {
+template <c_FullMatrix MT1, c_FullMatrix MT2> struct MatrixResultType {
   using type = ComplexMatrix;
 };
 template <> struct MatrixResultType<RealMatrix, RealMatrix> {

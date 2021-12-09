@@ -10,8 +10,8 @@
 // overloading operator * for sclMath::ComplexMatrix, sclMath::RealMatrix
 
 /* template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2> */
-sclMath::c_Matrix auto operator*(const sclMath::c_Matrix auto &m1,
-                                 const sclMath::c_Matrix auto &m2) {
+sclMath::c_FullMatrix auto operator*(const sclMath::c_FullMatrix auto &m1,
+                                 const sclMath::c_FullMatrix auto &m2) {
 
   /* typedef typename sclMath::ScalarResultType<>::type ResultType; */
   typedef typename sclMath::MatrixResultType<

@@ -10,7 +10,7 @@ namespace sclMath {
 
 // INVALID copy matrix from sclMath::ComplexMatrix, sclMath::RealMatrix
 
-template <c_Matrix T_MATRIX, c_Matrix T_OUTPUT = T_MATRIX>
+template <c_FullMatrix T_MATRIX, c_FullMatrix T_OUTPUT = T_MATRIX>
 T_OUTPUT copyMatrix(const T_MATRIX &m) {
 
   typedef typename MatrixScalarType<T_MATRIX>::type ScalarType_input;

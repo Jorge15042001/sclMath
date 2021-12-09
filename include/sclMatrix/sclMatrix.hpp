@@ -45,7 +45,7 @@ public:
   T_SCALAR get(const std::int64_t i, const std::int64_t j) const;
 };
 
-std::ostream &operator<<(std::ostream &os, const c_Matrix auto &m);
+std::ostream &operator<<(std::ostream &os, const c_FullMatrix auto &m);
 
 } // namespace sclMath
 

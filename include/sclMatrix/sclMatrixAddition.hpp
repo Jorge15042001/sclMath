@@ -12,7 +12,7 @@
 // overloading operator + for sclMath::ComplexMatrix, sclMath::RealMatrix
 
 template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2>
-sclMath::c_Matrix auto operator+(const sclMath::Matrix<T_SCALAR1> &m1,
+sclMath::c_FullMatrix auto operator+(const sclMath::Matrix<T_SCALAR1> &m1,
                                  const sclMath::Matrix<T_SCALAR2> &m2) {
 
   typedef typename sclMath::ScalarResultType<T_SCALAR1, T_SCALAR2>::type T_OUT;
