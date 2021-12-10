@@ -216,6 +216,7 @@ SCENARIO("matrix multiplication result", "[sclMatrixMultiplication]") {
     }
   }
 }
+
 SCENARIO("matrix multiplication with ZeroMatrix", "[sclMatrixMultiplication]") {
   GIVEN("A real matrix ") {
     sclMath::RealMatrix m(4, 4,
@@ -223,6 +224,9 @@ SCENARIO("matrix multiplication with ZeroMatrix", "[sclMatrixMultiplication]") {
 
     sclMath::ZeroMatrix mZero(4, 4);
     sclMath::ZeroMatrix mZeroNoCompatible(3, 3);
+
+    sclMath::c_AnyMatrix auto a = sclMath::ZeroMatrix(1, 1);
+    CHECK_NOTHROW(mZero * mZero);
 
     CHECK_NOTHROW(m * mZero);
     CHECK_NOTHROW(mZero * m);
