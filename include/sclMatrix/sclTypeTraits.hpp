@@ -33,16 +33,17 @@ concept c_AnyMatrix = c_RealMatrix<T> || c_ComplexMatrix<T>;
 
 template <typename T>
 concept c_FullMatrix = std::is_same_v<T, Matrix<RealScalar>> ||
-    std::is_same_v<T, Matrix<ComplexScalar>> || std::is_same_v<T, ZeroMatrix>;
+    std::is_same_v<T, Matrix<ComplexScalar>>;
 
 // tempalte to get the scalar type of a matrix type
-template <sclMath::c_FullMatrix MT> struct MatrixScalarType {
+template <sclMath::c_AnyMatrix MT> struct MatrixScalarType {
   using type = ComplexScalar;
 };
 template <> struct MatrixScalarType<RealMatrix> { using type = RealScalar; };
+template <> struct MatrixScalarType<ZeroMatrix> { using type = RealScalar; };
 
 // useful for return type deduction
-template <c_FullMatrix MT1, c_FullMatrix MT2> struct MatrixResultType {
+template <c_AnyMatrix MT1, c_AnyMatrix MT2> struct MatrixResultType {
   using type = ComplexMatrix;
 };
 template <> struct MatrixResultType<RealMatrix, RealMatrix> {
