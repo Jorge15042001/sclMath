@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sclCopyMatrix.hpp"
 #include "sclMathErrors.hpp"
 #include "sclMatrix.hpp"
 
