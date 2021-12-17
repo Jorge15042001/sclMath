@@ -10,7 +10,7 @@ namespace sclMath {
 //  angle for sclMath::RealMatrix, sclMath::RealMatrix
 //  angle for sclMath::ComplexMatrix, sclMath::RealMatrix
 //  angle for sclMath::RealMatrix, sclMath::ComplexMatrix
-RealScalar angle(const c_FullMatrix auto &m1, const c_FullMatrix auto &m2) {
+RealScalar angle(const c_AnyMatrix auto &m1, const c_AnyMatrix auto &m2) {
   const RealScalar m1Norm = m1.norm();
   const RealScalar m2Norm = m2.norm();
 
