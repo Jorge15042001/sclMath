@@ -204,3 +204,37 @@ SCENARIO("matrix addition result", "[result]") {
     }
   }
 }
+SCENARIO("matrix addition with zeroMatrix", "[sclMatrixAddition]") {
+  GIVEN("A real matrix and a zero matirx") {
+    sclMath::RealMatrix m(4, 2, {1, 2, 5, 7, 5, 8, 4, 2});
+    sclMath::ZeroMatrix m_zero(4, 2);
+
+    WHEN("added together") {
+      sclMath::RealMatrix result = m + m_zero;
+      sclMath::RealMatrix result1 = m_zero + m;
+
+      sclMath::ZeroMatrix zero = m_zero + m_zero;
+
+      THEN("The result must equal the non zero matrix") {
+        REQUIRE(result == m);
+        REQUIRE(result1 == m);
+      }
+    }
+  }
+  GIVEN("A Complex matrix and a zero matirx") {
+    sclMath::ComplexMatrix m(4, 2, {1, 2, {5, 1}, 7, 5, {-8, 1}, 4, 2});
+    sclMath::ZeroMatrix m_zero(4, 2);
+
+    WHEN("added together") {
+      sclMath::ComplexMatrix result = m + m_zero;
+      sclMath::ComplexMatrix result1 = m_zero + m;
+
+      sclMath::ZeroMatrix zero = m_zero + m_zero;
+
+      THEN("The result must equal the non zero matrix") {
+        REQUIRE(result == m);
+        REQUIRE(result1 == m);
+      }
+    }
+  }
+}
