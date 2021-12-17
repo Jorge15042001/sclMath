@@ -2,7 +2,7 @@
 #include "sclMatrix/sclMatrixComparison.hpp"
 #include <catch2/catch_test_macros.hpp>
 
-SCENARIO("matrix addition result", "[result]") {
+SCENARIO("matrix addition result", "[sclMatrixAddition]") {
 
   GIVEN("2 complexx matrices of compatible sizes") {
     // TODO: write indentity matrix class;
