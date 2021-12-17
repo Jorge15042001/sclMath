@@ -11,11 +11,14 @@
 // overloading operator + for sclMath::RealMatrix, sclMath::ComplexMatrix
 // overloading operator + for sclMath::ComplexMatrix, sclMath::RealMatrix
 
-template <sclMath::c_Scalar T_SCALAR1, sclMath::c_Scalar T_SCALAR2>
-sclMath::c_FullMatrix auto operator+(const sclMath::Matrix<T_SCALAR1> &m1,
-                                 const sclMath::Matrix<T_SCALAR2> &m2) {
+sclMath::c_FullMatrix auto operator+(const sclMath::c_FullMatrix auto &m1,
+                                     const sclMath::c_FullMatrix auto &m2) {
 
-  typedef typename sclMath::ScalarResultType<T_SCALAR1, T_SCALAR2>::type T_OUT;
+  typedef std::remove_cvref_t<decltype(m1)> m1_type;
+  typedef std::remove_cvref_t<decltype(m2)> m2_type;
+
+  typedef typename sclMath::MatrixResultType<m1_type, m2_type>::type MatrixType;
+  typedef typename sclMath::MatrixScalarType<MatrixType>::type ScalarType;
 
   sclMathError::ASSERT2(
       m1.getRows() == m2.getRows(),
