@@ -15,7 +15,8 @@ namespace sclMath {
 // inner Product for sclMath::ComplexMatrix, sclMath::ComplexMatrix
 // inner Product for sclMath::ComplexMatrix, sclMath::RealMatrix
 // inner Product for sclMath::RealMatrix, sclMath::ComplexMatrix
-c_Scalar auto innerProduct(const c_FullMatrix auto &m1, const c_FullMatrix auto &m2) {
+c_Scalar auto innerProduct(const c_AnyMatrix auto &m1,
+                           const c_AnyMatrix auto &m2) {
   sclMathError::ASSERT2(
       m1.getRows() == m2.getRows(),
       "Inner Product requires both matrices to have the same shape");
