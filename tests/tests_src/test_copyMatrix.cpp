@@ -61,3 +61,8 @@ TEST_CASE("Copy RealMatrix to ComplexMatrix", "[copyMatrix]") {
       sclMath::copyMatrix<sclMath::RealMatrix, sclMath::ComplexMatrix>(m1);
   REQUIRE(m1 == m1_copy);
 }
+TEST_CASE("copy zero matrix", "[copyMatrix]") {
+  sclMath::ZeroMatrix zero(4, 4);
+  sclMath::RealMatrix zeroCopyReal = sclMath::copyMatrix(zero);
+  sclMath::ComplexMatrix zeroCopyComplex = sclMath::copyMatrix(zero);
+}

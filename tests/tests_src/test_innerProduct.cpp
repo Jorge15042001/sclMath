@@ -160,6 +160,6 @@ TEST_CASE("innerProduct with a zeroMatrix", "[innerProduct]") {
   m2.set(2, 2, 1);
   m2.set(2, 2, {2, 2});
 
-  /* sclMath::RealScalar zeroReal1 = sclMath::innerProduct(m1, zero); */
-  /* sclMath::RealScalar zeroReal2 = sclMath::innerProduct(zero, m1); */
+  sclMath::RealScalar zeroReal1 = sclMath::innerProduct(m1, zero);
+  sclMath::RealScalar zeroReal2 = sclMath::innerProduct(zero, m1);
 }
