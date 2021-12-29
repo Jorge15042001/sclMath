@@ -60,4 +60,8 @@ template <> struct ScalarResultType<RealScalar, RealScalar> {
 template <c_AnyMatrix M_any1, c_AnyMatrix M_any2>
 constexpr inline bool anyIsZeroMatrix =
     std::is_same_v<M_any1, ZeroMatrix> || std::is_same_v<M_any2, ZeroMatrix>;
+
+template <c_AnyMatrix M_type>
+constexpr inline bool isZeroMatrix = std::is_same_v<M_type, ZeroMatrix>;
+
 } // namespace sclMath
